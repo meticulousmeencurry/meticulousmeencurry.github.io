@@ -1,505 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashwin Kalaichandran | DevOps Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    :root {
-      --primary: #2D3436;
-      --secondary: #636E72;
-      --accent: #D63031;
-      --background: #F8F9FA;
-      --text: #2D3436;
-    }
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      color: #2c2c2c;
-      background: #ffffff;
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: clamp(16px, 2.5vw, 18px);
-      font-weight: 400;
-      line-height: 1.7;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      height: clamp(60px, 8vh, 70px);
-      background: var(--primary);
-      padding: 0 clamp(20px, 5vw, 60px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1000;
-    }
-    nav .logo {
-      font-size: clamp(16px, 2.5vw, 20px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: white;
-    }
-    nav .nav-links {
-      display: inline-flex;
-      gap: clamp(15px, 3vw, 30px);
-    }
-    nav .nav-links a {
-      font-size: clamp(12px, 1.8vw, 14px);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-    }
-    nav .nav-links a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-    main {
-      margin-top: clamp(60px, 8vh, 70px);
-      padding-top: 0;
-      width: 100%;
-      max-width: 100%;
-    }
-    #intro {
-      min-height: clamp(500px, 80vh, 100vh);
-      padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-      background: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #intro .content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      width: 100%;
-    }
-    #intro .greeting {
-      font-size: clamp(16px, 2.5vw, 20px);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 15px;
-      color: #ffffff;
-      opacity: 0.95;
-    }
-    #intro .name {
-      font-size: clamp(32px, 6vw, 56px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.2;
-      margin: 0 auto 20px;
-      text-align: center;
-      color: #ffffff;
-    }
-    #intro .title {
-      font-size: clamp(18px, 3vw, 24px);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      opacity: 0.9;
-      text-align: center;
-    }
-    section {
-      padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      background: #ffffff;
-      color: #2c2c2c;
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-    section:nth-child(even) {
-      background: #f5f5f5;
-    }
-    section h1, section h2, section h3 {
-      color: #1a1a1a !important;
-    }
-    section p, section li, section span {
-      color: #2c2c2c !important;
-    }
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    section h2 {
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: clamp(30px, 5vw, 50px);
-      text-align: center;
-    }
-    section h3 {
-      font-size: clamp(18px, 3vw, 22px);
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #2c2c2c !important;
-    }
-    .layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      gap: clamp(30px, 5vw, 50px);
-      width: 100%;
-    }
-    .block {
-      padding: clamp(20px, 4vw, 30px);
-      border-left: 4px solid var(--accent);
-      background: transparent;
-    }
-    .block p, .block li {
-      font-size: clamp(15px, 2vw, 17px);
-      line-height: 1.7;
-      color: #2c2c2c !important;
-    }
-    .block .job-title, .block .company {
-      color: #1a1a1a !important;
-      font-weight: 600;
-    }
-    .block .date {
-      color: #5a5a5a !important;
-      font-style: italic;
-    }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-    }
-    .skill-card {
-      padding: 20px 24px;
-      background: #ffffff;
-      border: 2px solid #e0e0e0;
-      border-left: 4px solid var(--accent);
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .skill-name {
-      font-size: clamp(14px, 2vw, 16px);
-      font-weight: 600;
-      color: #1a1a1a !important;
-      text-transform: uppercase;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spoorthi K T - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #6C5CE7;
+    --secondary: #A29BFE;
+    --accent: #FD79A8;
+    --background: #F8F9FA;
+    --text: #2D3436;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #2c2c2c;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: clamp(60px, 8vh, 70px);
+    background: var(--primary);
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  nav .logo {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff !important;
+    user-select: none;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    gap: clamp(15px, 3vw, 30px);
+  }
+  nav ul li {
+    font-size: clamp(12px, 1.8vw, 14px);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    user-select: none;
+  }
+  nav ul li:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  main {
+    margin-top: clamp(60px, 8vh, 70px);
+    padding-top: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  #intro {
+    min-height: clamp(500px, 80vh, 100vh);
+    padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff !important;
+  }
+  #intro .greeting {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 15px;
+    opacity: 0.95;
+  }
+  #intro .name {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0 auto 20px;
+    color: #ffffff;
+  }
+  #intro .title {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+  section {
+    opacity: 1 !important;
+    background: #ffffff;
+    color: #2c2c2c !important;
+    padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  section.animate-on-scroll:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  section.animate-on-scroll {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    color: #1a1a1a !important;
+    text-align: center;
+  }
+  section h2 {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c2c2c !important;
+  }
+  section p, section li, section span {
+    color: #2c2c2c !important;
+  }
+  #summary, #experience, #education {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  #experience, #education {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(30px, 5vw, 50px);
+  }
+  .content-block {
+    padding: clamp(20px, 4vw, 30px);
+    border-left: 4px solid var(--accent);
+    background: transparent;
+  }
+  .content-block h3 {
+    color: #1a1a1a !important;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+  .content-block .date {
+    color: #5a5a5a !important;
+    font-style: italic;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .content-block p, .content-block ul {
+    margin: 0;
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.7;
+  }
+  .content-block ul {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+  #skills {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  .skill-card {
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-left: 4px solid var(--accent);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .skill-name {
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    color: #1a1a1a !important;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e8e8;
+    margin-top: 12px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    animation: fillBar 1.5s ease-out forwards;
+    width: 0;
+  }
+  @keyframes fillBar {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  footer {
+    padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
+    background: #2e3141;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: clamp(11px, 1.5vw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    user-select: none;
+  }
+  @media (max-width: 768px) {
+    nav ul li {
+      font-size: 11px;
       letter-spacing: 0.03em;
     }
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      background: #e8e8e8;
-      margin-top: 12px;
-      border-radius: 3px;
-      overflow: hidden;
+    #skills {
+      grid-template-columns: repeat(2, 1fr);
     }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      animation: fillBar 1.5s ease-out forwards;
+  }
+  @media (max-width: 480px) {
+    section {
+      padding: 40px 20px;
     }
-    @keyframes fillBar {
-      from { width: 0; }
-      to { width: 100%; }
+    #skills {
+      grid-template-columns: 1fr;
     }
-    .button {
-      border: 2px solid var(--primary);
-      background: transparent;
-      padding: clamp(12px, 2vw, 15px) clamp(25px, 4vw, 35px);
-      font-size: clamp(12px, 1.8vw, 14px);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: all 0.3s;
-      color: var(--primary);
-      display: inline-block;
-      margin-top: 20px;
-    }
-    .button:hover {
-      background: var(--primary);
-      color: white;
-    }
-    footer {
-      padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
-      background: #2e3141;
-      color: rgba(255,255,255,0.6);
-      text-align: center;
-    }
-    footer p {
-      font-size: clamp(11px, 1.5vw, 13px);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .animate-on-scroll:not(.visible) {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .animate-on-scroll {
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (max-width: 768px) {
-      nav .nav-links a {
-        font-size: 11px;
-        letter-spacing: 0.03em;
-      }
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 480px) {
-      .layout, .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      section {
-        padding: 40px 20px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <nav id="navbar">
-    <div class="logo">Ashwin Kalaichandran</div>
-    <div class="nav-links">
-      <a href="#summary">Summary</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
+<nav id="navbar" role="navigation" aria-label="Primary Navigation">
+  <div class="logo" aria-label="Site Logo">SPOORTHI K T</div>
+  <ul role="menubar">
+    <li role="menuitem"><a href="#summary" style="color:inherit; text-decoration:none;">Summary</a></li>
+    <li role="menuitem"><a href="#experience" style="color:inherit; text-decoration:none;">Experience</a></li>
+    <li role="menuitem"><a href="#skills" style="color:inherit; text-decoration:none;">Skills</a></li>
+    <li role="menuitem"><a href="#education" style="color:inherit; text-decoration:none;">Education</a></li>
+  </ul>
+</nav>
+<main>
+  <section id="intro" aria-label="Introduction">
+    <div>
+      <div class="greeting">Hello, I'm</div>
+      <h1 class="name" aria-level="1">Spoorthi K T</h1>
+      <div class="title" aria-level="2">Electronics & Communication Engineer | Web & Python Developer</div>
     </div>
-  </nav>
-  <main>
-    <section id="intro">
-      <div class="content">
-        <p class="greeting">Hello, I'm</p>
-        <h1 class="name">Ashwin Kalaichandran</h1>
-        <p class="title">DevOps Engineer | Bengaluru</p>
-      </div>
-    </section>
-    <section id="summary" class="animate-on-scroll">
-      <div class="container">
-        <h2>Summary</h2>
-        <div class="layout">
-          <div class="block">
-            <p>DevOps Engineer with 7 years of experience in deploying and maintaining scalable DevOps ecosystem with end-to-end delivery pipelines across cloud and on-prem platforms. I adhere to the first principles of DevSecOps with a Shift Left mindset. Proven track record of delivery optimization by striking the right balance between velocity, quality and cost. Integrated various security tools in CICD pipelines. Agile way of working as a Product Owner. Avid learner who adapts to the everchanging technology landscape.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="experience" class="animate-on-scroll">
-      <div class="container">
-        <h2>Experience</h2>
-        <div class="layout">
-          <div class="block">
-            <h3 class="job-title">Advanced Software Engineer</h3>
-            <p class="company">APTIV | JUL 2023 – Present</p>
-            <ul>
-              <li>Managed Kubernetes deployments and automated AWS infrastructure provisioning (EC2, EKS, S3, VPC, IAM) using Terraform and CloudFormation</li>
-              <li>Built CI/CD pipelines in Jenkins and GitHub Actions, integrating Git, Maven, JFrog, and Docker to streamline microservices deployment and Lambda automation workflows</li>
-              <li>Optimized Git repositories larger than 100GB using Git LFS to reduce repository sizes by 30%</li>
-              <li>Enforced merge gate policies through CI tools to ensure only verified code merged into release branches</li>
-              <li>Saved around $1000 by using Docker to containerize compute-heavy workloads running on nodes</li>
-              <li>Cut log analysis time by 50% by building a custom Python CLI tool to extract and highlight error messages</li>
-              <li>Monitored application performance and infrastructure with Prometheus, Grafana, Datadog, and CloudWatch, configured alerts and handled on-call production support</li>
-              <li>Reduced pod scheduling time by 50% and cloud costs by 15% by optimizing EKS resource usage by right-sizing the pods as per resource usage observed in Grafana and Datadog</li>
-              <li>Created Bash/Python scripts and Jenkins jobs for deploying Lambda functions and integrating security scans using Trivy and SonarQube</li>
-              <li>Served as Product Owner for an automotive project, collected project requirements, designed system architecture including branching strategies, allocated AWS resources, and collaborated on planning with Scrum Masters</li>
-              <li>Authored Groovy scripts in Jenkins Shared Library for reusable deployment logic to accelerate project setup</li>
-              <li>Optimized EKS resource usage and reduced costs through pod right-sizing and enhanced observability practices using Grafana and Datadog</li>
-              <li>Crafted Python CLI scripts for automating build setup and deployment actions</li>
-              <li>Monitored infrastructure and CI pipelines actively, implementing safeguards for reliability and uptime</li>
-              <li>Resolved incidents and performed problem management, ensuring swift issue resolution and root cause detection</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Senior Software Engineer</h3>
-            <p class="company">HCLTech | SEP 2021– JUL 2023</p>
-            <ul>
-              <li>Implemented end-to-end automation for all builds and deployments in Continuous Integration setups</li>
-              <li>Utilized Apache Ant and other build tools to streamline compilation and packaging processes</li>
-              <li>Built deployment and automation scripts using Groovy, Perl, Shell, and Python to reduce manual efforts</li>
-              <li>Managed version control using SVN and GitLab, ensuring seamless source code tracking and integration</li>
-              <li>Configured monitoring tools like Kapacitor and Grafana to track performance metrics and system health</li>
-              <li>Established GitLab CI/CD pipelines to standardize software lifecycle processes</li>
-              <li>Created monitoring scripts for applications, systems, and databases, ensuring consistent visibility</li>
-              <li>Delivered TCL scripts to perform bulk database modifications with precision</li>
-              <li>Migrated source code repositories from SVN to GitLab to improve version control and collaboration</li>
-              <li>Automated ITIL reports with Python scripts to improve incident tracking and reporting accuracy</li>
-              <li>Extracted bulk data from databases using TCL scripting for downstream processes</li>
-              <li>Oversaw deployments across Production and Non-Production platforms, maintaining version integrity</li>
-              <li>Participated in on-call support rotations, addressing application issues and ensuring SLAs were met</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Programmer Analyst</h3>
-            <p class="company">Cognizant | AUG 2020 – SEP 2021</p>
-            <ul>
-              <li>Automated multiple manual processes related to PLM application deployment, installation, and monitoring to improve operational efficiency</li>
-              <li>Developed Python scripts to streamline IT operations like processing user requests and provisioning tasks</li>
-              <li>Built Grafana dashboards to visualize application performance metrics and system health</li>
-              <li>Migrated engineering data—including CAD and CAE documents—from ENOVIA V5 to 3DExperience 2019x, ensuring data integrity and failure recovery</li>
-              <li>Deployed, tested, and validated the PLM Tool in both Quality and Production environments to ensure readiness and reliability</li>
-              <li>Provided 24/7 support for the Production Environment, maintaining system uptime and quick issue turnaround</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Associate IT Developer</h3>
-            <p class="company">Medtronic | JUL 2019 – AUG 2020</p>
-            <ul>
-              <li>Deployed full-stack PLM Applications like 3DExperience in Production environments to meet business delivery timelines</li>
-              <li>Administered, licensed, installed, configured, and resolved issues for on-premise and cloud-based 3DExperience systems</li>
-              <li>Designed Proof of Concepts (PoC) for customer-specific requirements and performed benchmark evaluations</li>
-              <li>Configured and managed both Windows and Linux OS for PLM workloads and automation tasks</li>
-              <li>Managed incidents and ticket flows using ServiceNow for rapid resolution and team visibility</li>
-              <li>Developed macros and configurations for automotive design tools to enhance engineer productivity</li>
-              <li>Automated design workflows—both parametric and non-parametric—using CATIA for automotive product lines</li>
-              <li>Collaborated with engineering teams to streamline deployment pipelines and cut down provisioning time using scripts</li>
-              <li>Conducted root cause analysis and implemented long-term fixes to boost stability and reduce recurring issues</li>
-              <li>Supported environment cloning, platform migration, and version upgrades to meet system evolution needs</li>
-              <li>Integrated automated monitoring and log analysis solutions to elevate observability and accelerate incident response</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Programmer Analyst</h3>
-            <p class="company">Cognizant | DEC 2017 – JUL 2019</p>
-            <ul>
-              <li>Managed full-cycle support and maintenance for Enovia 2009x across QA and Production stages</li>
-              <li>Deployed, tested, and validated PLM tools in QA and Production environments to ensure solution consistency</li>
-              <li>Provided 24/7 Production Environment support to maintain business continuity and address critical issues</li>
-              <li>Delivered TCL and MQL scripts for performing bulk updates on production databases</li>
-              <li>Migrated codebase from SVN to GitLab, improving version control systems and collaboration efficiency</li>
-              <li>Participated in Hackathons, delivering innovative technical solutions aligned with customer requirements</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="skills" class="animate-on-scroll">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-name">Python</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Shell</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Git</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Gerrit</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">GitHub</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Plastic SCM</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Docker</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Kubernetes</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">SonarQube</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Coverity</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Trivy</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">BlackDuck</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Terraform</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">AWS EC2</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">EKS</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Lambda</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">RDS</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Datadog</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Grafana</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Jira</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="education" class="animate-on-scroll">
-      <div class="container">
-        <h2>Education</h2>
-        <div class="layout">
-          <div class="block">
-            <h3 class="job-title">Bachelor of Engineering – Mechanical</h3>
-            <p class="company">St. Joseph’s Institute of Technology (Anna University) | 2013 – 2017</p>
-            <p class="date">CGPA: 8.14 /10</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <p>&copy; 2025 Ashwin Kalaichandran. All rights reserved.</p>
-    </footer>
-  </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('.animate-on-scroll');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      sections.forEach(section => observer.observe(section));
+  </section>
+
+  <section id="summary" class="animate-on-scroll" aria-labelledby="summary-title">
+    <h1 id="summary-title">Objective</h1>
+    <p>Innately curious and solution-driven Electronics & Communication Engineering graduate aiming to contribute to impactful tech projects and grow within a forward-thinking engineering team, with experience in Web Development and testing processes.</p>
+  </section>
+
+  <section id="experience" class="animate-on-scroll" aria-labelledby="experience-title">
+    <h1 id="experience-title">Experience</h1>
+    <div class="content-block" role="article" aria-label="Internship at NNFC, IISC">
+      <h3>Intern, NNFC, IISC</h3>
+      <span class="date">08/04/2025 – 09/05/2025</span>
+      <p>Worked on Sputter coater, e-beam evaporator, and atomic layer deposition (ALD) tools used to apply thin films on materials and in testing processes.</p>
+    </div>
+    <div class="content-block" role="article" aria-label="Web Development at ApexPlanet Software Pvt Ltd">
+      <h3>Web Development, ApexPlanet Software Pvt Ltd</h3>
+      <span class="date">06/03/2025 – 25/07/2025</span>
+      <p>Focused on front-end (HTML, CSS, JavaScript), back-end (server-side logic, databases), and full-stack development.</p>
+    </div>
+    <div class="content-block" role="article" aria-label="Internship at Rooman Technologies Pvt Ltd">
+      <h3>Intern, Rooman Technologies Private Limited</h3>
+      <span class="date">03/10/2024 – 10/03/2025</span>
+      <p>Python developer creating and maintaining software for web, data, and automation applications.</p>
+    </div>
+    <div class="content-block" role="article" aria-label="Python Developer at Octanet Private Limited">
+      <h3>Python Developer, Octanet Private Limited</h3>
+      <span class="date">25/11/2023 – 30/12/2023</span>
+      <p>Created and maintained software using Python for diverse fields including web, data, and automation.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="animate-on-scroll" aria-labelledby="skills-title">
+    <h1 id="skills-title">Skills</h1>
+    <div class="skill-card" role="listitem" aria-label="Skill C">
+      <div class="skill-name">C</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Java">
+      <div class="skill-name">Java</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill MySQL">
+      <div class="skill-name">MySQL</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Testing">
+      <div class="skill-name">Testing</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Node.js">
+      <div class="skill-name">Node.js</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill CSS">
+      <div class="skill-name">CSS</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Data Interpretation">
+      <div class="skill-name">Data Interpretation</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Azure">
+      <div class="skill-name">Azure</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill DSA Python">
+      <div class="skill-name">DSA Python</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Javascript">
+      <div class="skill-name">Javascript</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Excel">
+      <div class="skill-name">Excel</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill React.js">
+      <div class="skill-name">React.js</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill Django">
+      <div class="skill-name">Django</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill HTML">
+      <div class="skill-name">HTML</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill AWS">
+      <div class="skill-name">AWS</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" role="listitem" aria-label="Skill DBMS">
+      <div class="skill-name">DBMS</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+  </section>
+
+  <section id="education" class="animate-on-scroll" aria-labelledby="education-title">
+    <h1 id="education-title">Education</h1>
+    <div class="content-block" role="article" aria-label="B.E Electronics and Communication Engineering">
+      <h3>B.E in Electronics and Communication Engineering</h3>
+      <span class="date">2021 – 2025</span>
+      <p>MVJ College of Engineering, Bangalore</p>
+      <p>CGPA: 8.9</p>
+    </div>
+    <div class="content-block" role="article" aria-label="Pre University Certificate">
+      <h3>Pre University Certificate</h3>
+      <span class="date">2021</span>
+      <p>Vishwachetana Vidyaniketana Residential PU College, Davanagere</p>
+      <p>Percentage: 99.3%</p>
+    </div>
+    <div class="content-block" role="article" aria-label="Secondary School Leaving Certificate">
+      <h3>Secondary School Leaving Certificate</h3>
+      <span class="date">2019</span>
+      <p>SAC Mayura Vidyalaya, Turuvekere</p>
+      <p>Percentage: 96.8%</p>
+    </div>
+    <div class="content-block" role="article" aria-label="Certificates">
+      <h3>Certificates</h3>
+      <ul>
+        <li>Web Development with HTML, CSS, JavaScript</li>
+        <li>Flipkart Grid 2024 Competition</li>
+        <li>Full Stack Web Development - PREPINSTA</li>
+        <li>JP Morgan Chase & Co Excel Skills Job Simulation with Tabulae and PWC Power BI Job Simulation</li>
+        <li>AINCAT 2025 - Naukari Campus</li>
+        <li>Ruby and Python Course Certification from IITB</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer role="contentinfo">
+  &copy; 2025 Spoorthi K T. All rights reserved.
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  </script>
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+});
+</script>
 </body>
 </html>
