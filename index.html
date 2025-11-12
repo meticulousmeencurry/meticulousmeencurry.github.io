@@ -1,665 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rispa Joseph VJ - DevOps Engineer & Full Stack Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00B894;
-            --secondary: #00CEC9;
-            --accent: #FDCB6E;
-            --background: #DFE6E9;
-            --text: #2D3436;
-        }
-
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: clamp(16px, 2.5vw, 18px);
-            font-weight: 400;
-            line-height: 1.7;
-            color: #2c2c2c;
-            background: #ffffff;
-        }
-
-        /* Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: clamp(60px, 8vh, 70px);
-            background: var(--primary);
-            padding: 0 clamp(20px, 5vw, 60px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav .logo {
-            font-size: clamp(16px, 2.5vw, 20px);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #ffffff !important;
-        }
-
-        nav ul {
-            display: inline-flex;
-            gap: clamp(15px, 3vw, 30px);
-            list-style: none;
-        }
-
-        nav a {
-            font-size: clamp(12px, 1.8vw, 14px);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: rgba(255, 255, 255, 0.8) !important;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #ffffff !important;
-            text-decoration: underline;
-        }
-
-        /* Main Content */
-        main {
-            margin-top: clamp(60px, 8vh, 70px);
-            padding-top: 0;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        /* Hero Section */
-        #intro {
-            min-height: clamp(500px, 80vh, 100vh);
-            padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1 !important;
-        }
-
-        #intro .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            width: 100%;
-        }
-
-        #intro .greeting {
-            font-size: clamp(16px, 2.5vw, 20px);
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 15px;
-            color: #ffffff !important;
-            opacity: 0.95;
-        }
-
-        #intro h1 {
-            font-size: clamp(32px, 6vw, 56px);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            line-height: 1.2;
-            margin: 0 auto 20px;
-            text-align: center;
-            color: #ffffff !important;
-        }
-
-        #intro .title {
-            font-size: clamp(18px, 3vw, 24px);
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #ffffff !important;
-            opacity: 0.9;
-            text-align: center;
-        }
-
-        #intro .contact-links {
-            margin-top: 30px;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        #intro .contact-links a {
-            color: #ffffff !important;
-            text-decoration: none;
-            font-size: clamp(12px, 1.8vw, 14px);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: 2px solid #ffffff;
-            padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 25px);
-            transition: all 0.3s ease;
-        }
-
-        #intro .contact-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Sections */
-        section {
-            padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-            opacity: 1 !important;
-        }
-
-        section:nth-child(even) {
-            background: #f5f5f5;
-        }
-
-        section:nth-child(odd) {
-            background: #ffffff;
-        }
-
-        section .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: clamp(28px, 5vw, 42px);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: clamp(30px, 5vw, 50px);
-            color: #1a1a1a !important;
-            text-align: center;
-        }
-
-        section h3 {
-            font-size: clamp(18px, 3vw, 22px);
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #2c2c2c !important;
-        }
-
-        section p, section li, section span {
-            color: #2c2c2c !important;
-        }
-
-        /* Scroll Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        section.animate-on-scroll:not(.visible) {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        /* Summary Section */
-        #summary .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: clamp(30px, 5vw, 50px);
-            width: 100%;
-        }
-
-        .summary-block {
-            padding: clamp(20px, 4vw, 30px);
-            border-left: 4px solid var(--accent);
-            background: transparent;
-        }
-
-        .summary-block h3 {
-            color: #1a1a1a !important;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .summary-block p {
-            font-size: clamp(15px, 2vw, 17px);
-            line-height: 1.7;
-            color: #2c2c2c !important;
-        }
-
-        .summary-block .date {
-            color: #5a5a5a !important;
-            font-style: italic;
-            font-size: clamp(13px, 1.8vw, 15px);
-            margin-bottom: 8px;
-        }
-
-        /* Experience Section */
-        #experience .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-            gap: clamp(30px, 5vw, 50px);
-            width: 100%;
-        }
-
-        .experience-card {
-            padding: clamp(25px, 4vw, 35px);
-            border-left: 4px solid var(--primary);
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .experience-card h3 {
-            color: #1a1a1a !important;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .experience-card .company {
-            color: #5a5a5a !important;
-            font-style: italic;
-            font-size: clamp(13px, 1.8vw, 15px);
-            margin-bottom: 10px;
-        }
-
-        .experience-card .date {
-            color: #5a5a5a !important;
-            font-style: italic;
-            font-size: clamp(13px, 1.8vw, 15px);
-            margin-bottom: 15px;
-        }
-
-        .experience-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .experience-card li {
-            font-size: clamp(14px, 2vw, 16px);
-            line-height: 1.7;
-            color: #2c2c2c !important;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .experience-card li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Skills Section */
-        #skills .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-
-        .skill-card {
-            padding: 20px 24px;
-            background: #ffffff;
-            border: 2px solid #e0e0e0;
-            border-left: 4px solid var(--accent);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-card .skill-name {
-            font-size: clamp(14px, 2vw, 16px);
-            font-weight: 600;
-            color: #1a1a1a !important;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .skill-card .progress-container {
-            width: 100%;
-            height: 6px;
-            background: #e8e8e8;
-            margin-top: 12px;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .skill-card .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
-            animation: fillBar 1.5s ease-out forwards;
-        }
-
-        @keyframes fillBar {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
-        }
-
-        /* Education Section */
-        #education .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-            gap: clamp(30px, 5vw, 50px);
-            width: 100%;
-        }
-
-        .education-card {
-            padding: clamp(25px, 4vw, 35px);
-            border-left: 4px solid var(--secondary);
-            background: transparent;
-        }
-
-        .education-card h3 {
-            color: #1a1a1a !important;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .education-card .institution {
-            color: #5a5a5a !important;
-            font-style: italic;
-            font-size: clamp(13px, 1.8vw, 15px);
-            margin-bottom: 10px;
-        }
-
-        .education-card .date {
-            color: #5a5a5a !important;
-            font-style: italic;
-            font-size: clamp(13px, 1.8vw, 15px);
-            margin-bottom: 15px;
-        }
-
-        .education-card p {
-            font-size: clamp(14px, 2vw, 16px);
-            line-height: 1.7;
-            color: #2c2c2c !important;
-        }
-
-        /* Projects Section */
-        #projects .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-            gap: clamp(30px, 5vw, 50px);
-            width: 100%;
-        }
-
-        .project-card {
-            padding: clamp(25px, 4vw, 35px);
-            border-left: 4px solid var(--primary);
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-card h3 {
-            color: #1a1a1a !important;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .project-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .project-card li {
-            font-size: clamp(14px, 2vw, 16px);
-            line-height: 1.7;
-            color: #2c2c2c !important;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .project-card li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Additional Info Section */
-        #additional .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: clamp(30px, 5vw, 50px);
-            width: 100%;
-        }
-
-        .info-block {
-            padding: clamp(20px, 4vw, 30px);
-            border-left: 4px solid var(--secondary);
-            background: transparent;
-        }
-
-        .info-block h3 {
-            color: #1a1a1a !important;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .info-block ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .info-block li {
-            font-size: clamp(14px, 2vw, 16px);
-            line-height: 1.7;
-            color: #2c2c2c !important;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .info-block li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
-            background: #2e3141;
-            color: rgba(255, 255, 255, 0.6);
-            text-align: center;
-        }
-
-        footer p {
-            font-size: clamp(11px, 1.5vw, 13px);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav a {
-                font-size: 11px;
-                letter-spacing: 0.03em;
-            }
-
-            #skills .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            section h2 {
-                font-size: clamp(24px, 4vw, 32px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            #summary .content,
-            #experience .content,
-            #education .content,
-            #projects .content,
-            #additional .content {
-                grid-template-columns: 1fr;
-            }
-
-            #skills .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 40px 20px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                font-size: 10px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennifer J. David - Technical Writer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #2D3436;
+  --secondary: #636E72;
+  --accent: #D63031;
+  --background: #F8F9FA;
+  --text: #2D3436;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: clamp(16px, 2.5vw, 18px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: #2c2c2c;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: clamp(60px, 8vh, 70px);
+  background: var(--primary);
+  padding: 0 clamp(20px, 5vw, 60px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+nav .logo {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff !important;
+}
+
+nav ul {
+  display: inline-flex;
+  gap: clamp(15px, 3vw, 30px);
+  list-style: none;
+}
+
+nav a {
+  font-size: clamp(12px, 1.8vw, 14px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.8) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+main {
+  margin-top: clamp(60px, 8vh, 70px);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Hero Section */
+#intro {
+  min-height: clamp(500px, 80vh, 100vh);
+  padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1 !important;
+}
+
+#intro .hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+#intro .greeting {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+
+#intro h1 {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  margin: 0 auto 20px;
+  text-align: center;
+  color: #ffffff !important;
+}
+
+#intro .title {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff !important;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* Sections */
+section {
+  padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  opacity: 1 !important;
+  background: #ffffff;
+  color: #2c2c2c;
+}
+
+section:nth-child(even) {
+  background: #f5f5f5;
+}
+
+section h2 {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: clamp(30px, 5vw, 50px);
+  color: #1a1a1a !important;
+  text-align: center;
+}
+
+section h3 {
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1a1a1a !important;
+}
+
+section p, section li, section span {
+  color: #2c2c2c !important;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Animate on Scroll */
+section.animate-on-scroll:not(.visible) {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+section.animate-on-scroll {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Summary Section */
+#summary .content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#summary p {
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Experience Section */
+#experience .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  gap: clamp(30px, 5vw, 50px);
+  width: 100%;
+}
+
+.experience-block {
+  padding: clamp(20px, 4vw, 30px);
+  border-left: 4px solid var(--accent);
+  background: transparent;
+}
+
+.experience-block h3 {
+  color: #1a1a1a !important;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.company {
+  color: #1a1a1a !important;
+  font-weight: 600;
+  font-size: clamp(14px, 2vw, 16px);
+  margin-bottom: 5px;
+}
+
+.dates {
+  color: #5a5a5a !important;
+  font-style: italic;
+  font-size: clamp(13px, 1.8vw, 15px);
+  margin-bottom: 15px;
+}
+
+.experience-block p {
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.7;
+  color: #2c2c2c !important;
+  margin-bottom: 12px;
+}
+
+.experience-block ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.experience-block li {
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.6;
+  color: #2c2c2c !important;
+  margin-bottom: 8px;
+}
+
+/* Skills Section */
+#skills .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.skill-card {
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-left: 4px solid var(--accent);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.skill-name {
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  color: #1a1a1a !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+}
+
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Education Section */
+#education .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(30px, 5vw, 50px);
+  width: 100%;
+}
+
+.education-block {
+  padding: clamp(20px, 4vw, 30px);
+  border-left: 4px solid var(--accent);
+  background: transparent;
+}
+
+.education-block h3 {
+  color: #1a1a1a !important;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.institution {
+  color: #1a1a1a !important;
+  font-weight: 600;
+  font-size: clamp(14px, 2vw, 16px);
+  margin-bottom: 5px;
+}
+
+.year {
+  color: #5a5a5a !important;
+  font-style: italic;
+  font-size: clamp(13px, 1.8vw, 15px);
+  margin-bottom: 15px;
+}
+
+.education-block p {
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.7;
+  color: #2c2c2c !important;
+}
+
+/* Footer */
+footer {
+  padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
+  background: #2e3141;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+footer p {
+  font-size: clamp(11px, 1.5vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.6) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    gap: clamp(10px, 2vw, 20px);
+  }
+
+  nav a {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
+
+  #skills .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #experience .grid,
+  #education .grid {
+    grid-template-columns: 1fr;
+  }
+
+  #skills .grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+
+  nav {
+    padding: 0 15px;
+  }
+}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Rispa Joseph VJ</div>
-        <ul>
-            <li><a href="#summary">Summary</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
-    </nav>
 
-    <main>
-        <section id="intro">
-            <div class="hero-content">
-                <div class="greeting">Welcome to my portfolio</div>
-                <h1>Rispa Joseph VJ</h1>
-                <div class="title">DevOps Engineer & Full Stack Developer</div>
-                <div class="contact-links">
-                    <a href="mailto:rizpahjoseph@gmail.com">Email</a>
-                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                    <a href="https://github.com" target="_blank">GitHub</a>
-                </div>
-            </div>
-        </section>
+<nav>
+  <div class="logo">Jennifer David</div>
+  <ul>
+    <li><a href="#intro">Home</a></li>
+    <li><a href="#summary">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
 
-        <section id="summary" class="animate-on-scroll">
-            <div class="container">
-                <h2>Professional Summary</h2>
-                <div class="content">
-                    <div class="summary-block">
-                        <h3>DevOps & Cloud Expertise</h3>
-                        <p>DevOps Engineer with hands-on experience in leveraging Kubernetes, Docker, Terraform, and CI/CD pipelines to automate infrastructure management and enhance deployment efficiency. Skilled in cloud technologies and container orchestration, ensuring seamless and reliable software delivery.</p>
-                    </div>
-                    <div class="summary-block">
-                        <h3>Full Stack Development</h3>
-                        <p>Experienced Full Stack Developer proficient in modern web technologies including Python, Django, ReactJS, and cloud platforms. Specialized in building scalable applications, optimizing performance, and implementing best practices across the development lifecycle.</p>
-                    </div>
-                    <div class="summary-block">
-                        <h3>Continuous Learning</h3>
-                        <p>Certified Kubernetes Application Developer (CKAD) with a commitment to continuous learning and applying industry best practices. Focused on improving system performance, security, and operational efficiency through innovative solutions.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<main>
+  <section id="intro">
+    <div class="hero-content">
+      <div class="greeting">Technical Writer & Information Developer</div>
+      <h1>Jennifer J. David</h1>
+      <div class="title">Senior Technical Writer | Cloud Platforms | Documentation Specialist</div>
+    </div>
+  </section>
 
-        <section id="experience" class="animate-on-scroll">
-            <div class="container">
-                <h2>Professional Experience</h2>
-                <div class="content">
-                    <div class="experience-card">
-                        <h3>Software Developer</h3>
-                        <div class="company">Ewire Softtech Private Limited</div>
-                        <div class="date">Jul 2024 - Present</div>
-                        <ul>
-                            <li>Developed and deployed responsive web applications using HTML, CSS, JavaScript, ReactJS, and Django</li>
-                            <li>Optimized version control workflows with Git, enhancing team collaboration</li>
-                            <li>Collaborated with backend and DevOps teams to automate deployments and integrate RESTful APIs</li>
-                            <li>Significantly reduced deployment time through robust CI/CD pipelines</li>
-                        </ul>
-                    </div>
-                    <div class="experience-card">
-                        <h3>FullStack Developer</h3>
-                        <div class="company">Brototype</div>
-                        <div class="date">Jul 2023 - Jul 2024</div>
-                        <ul>
-                            <li>Designed and maintained scalable backend systems using Python, Django, and PostgreSQL</li>
-                            <li>Supported high-traffic applications with reliable uptime and performance</li>
-                            <li>Optimized database performance through efficient querying and indexing strategies</li>
-                            <li>Implemented modern technologies and best practices for improved development workflows</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="summary" class="animate-on-scroll">
+    <div class="container">
+      <h2>Professional Summary</h2>
+      <div class="content">
+        <p>Experienced Technical Writer and Senior Information Developer with 11+ years of expertise in creating comprehensive technical documentation for enterprise software, cloud platforms, and healthcare solutions. Proficient in SaaS, BaaS, and DevOps environments with strong knowledge of Agile methodologies. Skilled in content management tools, API documentation, and user-centric documentation design.</p>
+        <p>Multilingual professional fluent in English, Hindi, Marathi, and Tamil. Proven track record of delivering high-quality documentation on schedule while collaborating effectively with cross-functional teams including developers, product managers, and QA engineers.</p>
+      </div>
+    </div>
+  </section>
 
-        <section id="skills" class="animate-on-scroll">
-            <div class="container">
-                <h2>Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-name">Python</div>
-                        <div class="progress-container">
-                            <div class="progress-fill"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Django</div>
-                        <div class="progress-container">
-                            <div class="progress-fill"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Kubernetes</div>
-                        <div class="progress-container">
-                            <div class="progress-fill"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Docker</div>
-                        <div class="progress-container">
-                            <div class="progress-fill"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">AWS</div>
-                        <div class="progress-container">
-                            <div class
+  <section id="experience" class="animate-on-scroll">
+    <div class="container">
+      <h2>Professional Experience</h2>
+      <div class="grid">
+        <div class="experience-block">
+          <div class="company">HCL Technologies Ltd</div>
+          <div class="dates">Nov 2019 – Dec 2024</div>
+          <h3>Technical Lead / Sr Information Developer</h3>
+          <p>Led technical documentation initiatives for cloud platforms including SaaS and BaaS solutions. Specialized in Actian-BaaS project, developing comprehensive technical content for Java-based applications deployed on AWS Cloud.</p>
+          <ul>
+            <li>Managed content across multiple platforms: Markdown, HTML, Docker, FrameMaker, Adobe Acrobat, RoboHelp</li>
+            <li>Conducted requirement analysis and information gathering from stakeholders</li>
+            <li>Created user stories and managed documentation on Jira Dashboard</li>
+            <li>Developed FRS and user documentation for enterprise applications</li>
+            <li>Upgraded skills as Technical Information Security Officer (TISO)</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">ITC Infotech India Ltd / Lowes India</div>
+          <div class="dates">Apr 2018 – Nov 2019</div>
+          <h3>Technical Writer</h3>
+          <p>Developed documentation for digital platform enabling microservice application onboarding. Worked in DevOps-driven environment with emphasis on automation and continuous integration/deployment.</p>
+          <ul>
+            <li>Published content using Hugo and Markdown</li>
+            <li>Integrated documentation into CI/CD pipeline</li>
+            <li>Utilized Drone, Spinnaker, Kubernetes, and Docker</li>
+            <li>Managed version control with Git/Bitbucket</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">Indegene Lifesystems Pvt Ltd</div>
+          <div class="dates">Jun 2015 – May 2017</div>
+          <h3>Technical Writer</h3>
+          <p>Created comprehensive documentation for healthcare and life sciences solutions. Developed user and admin manuals for Indegene-ipace platform combining confidence-based assessment with gamification.</p>
+          <ul>
+            <li>Created user and admin manuals for ipace versions 1.0 and 2.0</li>
+            <li>Developed technical and product feature documents</li>
+            <li>Managed API documentation using Contentful CMS</li>
+            <li>Proficient in Adobe Captivate, FrameMaker, and RoboHelp</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">Honeywell Technology Solutions</div>
+          <div class="dates">Jun 2014</div>
+          <h3>Technical Writer</h3>
+          <p>Developed content for Honeywell Digital Suite (HDS) infrastructure documentation, including Quick Installation Guides for enterprise aerospace and commercial products.</p>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">IBM India Software Labs</div>
+          <div class="dates">Sep 2013</div>
+          <h3>Technical Writer</h3>
+          <p>Created documentation for IBM Tealeaf and Order Management Systems (OMS). Captured simulations and demos using Adobe Captivate for worldwide audiences.</p>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">ILANTUS Technologies</div>
+          <div class="dates">Jan 2013 – Mar 2013</div>
+          <h3>Technical Writer</h3>
+          <p>Documented comprehensive guides for Federation Express and Password Express products, including user guides, administrator guides, installation guides, and developer documentation.</p>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">ZeOmega Integrated Healthcare Management</div>
+          <div class="dates">Apr 2011 – Jan 2012</div>
+          <h3>Technical Writer</h3>
+          <p>Developed extensive documentation suite for Jiva Integrated Healthcare Management Software including user manuals, training materials, and technical notes.</p>
+          <ul>
+            <li>Created training manuals for Intake, Nurse, Supervisor, and Disease Management modules</li>
+            <li>Developed report manuals and online help files</li>
+            <li>Prepared release notes and glossaries</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <div class="company">Lionbridge Technologies / HP</div>
+          <div class="dates">Dec 2009 – Nov 2010</div>
+          <h3>Technical Writer</h3>
+          <p>Documented HP Client Automation (HPCA) application software including user guides, installation guides, and technical notes. Worked in Agile methodology with international teams.</p>
+          <ul>
+            <li>Documented HPCA components and system administration guides</li>
+            <li>Collaborated with Fort Collins-based product teams</li>
+            <li>Proficient in FrameMaker, WebWorks Publisher, and Visio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="animate-on-scroll">
+    <div class="container">
+      <h2>Technical Skills</h2>
+      <div class="grid">
+        <div class="skill-card">
+          <div class="skill-name">Adobe FrameMaker</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 95%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">RoboHelp</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Adobe Captivate</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 88%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Markdown</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 92%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Hugo</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">HTML/XML</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 88%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Git/Bitbucket</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 82%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Contentful CMS</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 80%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Docker</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 78%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Agile/Scrum</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">API Documentation</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 87%;"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Microsoft Office</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 93%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="documentation" class="animate-on-scroll">
+    <div class="container">
+      <h2>Documentation Expertise</h2>
+      <div class="grid">
+        <div class="experience-block">
+          <h3>Document Types</h3>
+          <ul>
+            <li>User Guides & Reference Guides</li>
+            <li>Installation & Configuration Guides</li>
+            <li>Quick Start & Troubleshooting Guides</li>
+            <li>Training Manuals & Report Manuals</li>
+            <li>Technical Notes & Release Notes</li>
+            <li>API Documentation</li>
+            <li>Online Help & Glossaries
