@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rispa Joseph VJ - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #2D3436;
+    --secondary: #636E72;
+    --accent: #D63031;
+    --background: #F8F9FA;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #2c2c2c;
+    background: var(--background);
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: clamp(60px, 8vh, 70px);
+    background: var(--primary);
+    padding: 0 clamp(20px, 5vw, 60px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .logo {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff !important;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    gap: clamp(15px, 3vw, 30px);
+  }
+  nav ul li a {
+    font-size: clamp(12px, 1.8vw, 14px);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.8) !important;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  nav ul li a:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+  }
+  main {
+    margin-top: clamp(60px, 8vh, 70px);
+    padding-top: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  #intro {
+    min-height: clamp(500px, 80vh, 100vh);
+    padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff !important;
+  }
+  #intro .greeting {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 15px;
+    opacity: 0.95;
+  }
+  #intro .name {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0 auto 20px;
+    color: #ffffff;
+  }
+  #intro .title {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+  section {
+    padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    opacity: 1 !important;
+    background: #ffffff;
+    color: #2c2c2c !important;
+  }
+  section:nth-of-type(even) {
+    background: #f5f5f5;
+  }
+  section h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    color: #1a1a1a !important;
+    text-align: center;
+  }
+  section h2 {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c2c2c !important;
+  }
+  section p, section li, section span {
+    color: #2c2c2c !important;
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.7;
+  }
+  .animate-on-scroll:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .animate-on-scroll {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #summary .edu-block, #experience .job-block, #projects .project-block, #skills .skill-card, #education .edu-block {
+    padding: clamp(20px, 4vw, 30px);
+    border-left: 4px solid var(--accent);
+    background: transparent;
+    margin-bottom: clamp(20px, 3vw, 30px);
+  }
+  #summary .edu-block h3, #experience .job-block h3, #projects .project-block h3, #education .edu-block h3 {
+    color: #1a1a1a !important;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+  }
+  #summary .edu-block time, #experience .job-block time, #education .edu-block time {
+    color: #5a5a5a !important;
+    font-style: italic;
+    font-weight: 400;
+  }
+  #summary .edu-block p, #experience .job-block p, #projects .project-block p, #education .edu-block p {
+    margin: 6px 0 0 0;
+  }
+  #experience .job-block ul {
+    margin: 8px 0 0 20px;
+    padding: 0;
+  }
+  #experience .job-block ul li {
+    margin-bottom: 6px;
+  }
+  #skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  .skill-card {
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-left: 4px solid var(--accent);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .skill-name {
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    color: #1a1a1a !important;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e8e8;
+    margin-top: 12px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    animation: fillBar 1.5s ease-out forwards;
+    width: 100%;
+  }
+  @keyframes fillBar {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  footer {
+    padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
+    background: #2e3141;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: clamp(11px, 1.5vw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 768px) {
+    nav ul li a {
+      font-size: 11px;
+      letter-spacing: 0.03em;
+    }
+    #skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    section {
+      padding: 40px 20px;
+    }
+    #skills {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<nav id="navbar" role="navigation" aria-label="Primary navigation">
+  <div class="logo" aria-label="Site logo">RISPA JOSEPH VJ</div>
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+<main>
+  <section id="intro" aria-label="Introduction">
+    <div>
+      <div class="greeting">DevOps Engineer</div>
+      <h1 class="name" aria-level="1" role="heading">Rispa Joseph VJ</h1>
+      <div class="title">FullStack Developer & DevOps Engineer</div>
+      <div style="margin-top: 1.5rem; font-weight: 300; font-size: clamp(14px, 2vw, 16px); opacity: 0.85;">
+        <a href="mailto:rizpahjoseph@gmail.com" style="color: #ffffff; text-decoration: underline;">rizpahjoseph@gmail.com</a> | <a href="https://linkedin.com/in/rizpahjoseph" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">LinkedIn</a> | <a href="https://github.com/rizpahjoseph" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="summary" class="animate-on-scroll" aria-label="Summary">
+    <h1>Summary</h1>
+    <div class="edu-block" aria-label="Education summary">
+      <h3>BCA</h3>
+      <time datetime="2018-01">Jan 2018 - Jul 2021</time>
+      <p>Siena College of Professional Studies, MG University</p>
+      <p>Graduated with First Class (6.21 CCPA)</p>
+    </div>
+    <div class="edu-block" aria-label="Education summary">
+      <h3>MCA</h3>
+      <time datetime="2015-08">Aug 2015 - Jul 2018</time>
+      <p>Union Christian College, MG University</p>
+      <p>Major in Computer Applications. First class with electives on Big Data Analytics and Distributed Computing.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="animate-on-scroll" aria-label="Professional experience">
+    <h1>Professional Experience</h1>
+    <div class="job-block" aria-label="Job at Brototype">
+      <h3>FullStack Developer, Brototype</h3>
+      <time datetime="2023-07">Jul 2023 - Jul 2024</time>
+      <ul>
+        <li>Designed and maintained scalable backend systems using Python, Django, and PostgreSQL, supporting high-traffic applications with reliable uptime.</li>
+        <li>Optimized database performance by implementing efficient querying and indexing strategies, ensuring fast data retrieval and high availability.</li>
+        <li>Implemented modern technologies and best practices, improving development workflows and aligning with industry standards.</li>
+      </ul>
+    </div>
+    <div class="job-block" aria-label="Job at Ewire Softtech Private Limited">
+      <h3>Software Developer, Ewire Softtech Private Limited</h3>
+      <time datetime="2024-07">Jul 2024 - Present</time>
+      <ul>
+        <li>Developed and deployed responsive web applications using HTML, CSS, JavaScript, ReactJS, and Django, improving user engagement and overall performance.</li>
+        <li>Optimized version control workflows with Git, enhancing team collaboration and ensuring smooth release cycles.</li>
+        <li>Collaborated with backend and DevOps teams to automate deployments and integrate RESTful APIs, significantly reducing deployment time through robust CI/CD pipelines.</li>
+      </ul>
+    </div>
+    <div class="job-block" aria-label="DevOps Engineer skills summary">
+      <p>DevOps Engineer with hands-on experience in leveraging Kubernetes, Docker, Terraform, and CI/CD pipelines to automate infrastructure management and enhance deployment efficiency. Skilled in cloud technologies and container orchestration, ensuring seamless and reliable software delivery. Continuously learning and applying best practices to improve system performance, security, and operational efficiency.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="animate-on-scroll" aria-label="Technical skills">
+    <h1>Technical Skills</h1>
+    <div class="skill-card" aria-label="Skill Python">
+      <div class="skill-name">Python</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill Django">
+      <div class="skill-name">Django</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill Kubernetes">
+      <div class="skill-name">Kubernetes</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill AWS">
+      <div class="skill-name">AWS</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill Docker">
+      <div class="skill-name">Docker</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill Git">
+      <div class="skill-name">Git</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill Jenkins">
+      <div class="skill-name">Jenkins</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill REST API">
+      <div class="skill-name">REST API</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+    <div class="skill-card" aria-label="Skill HTML, CSS, Javascript">
+      <div class="skill-name">HTML, CSS, Javascript</div>
+      <div class="progress-bar-container"><div class="progress-fill"></div></div>
+    </div>
+  </section>
+
+  <section id="education" class="animate-on-scroll" aria-label="Education details">
+    <h1>Education</h1>
+    <div class="edu-block" aria-label="MCA Education">
+      <h3>MCA</h3>
+      <time datetime="2015-08">Aug 2015 - Jul 2018</time>
+      <p>Union Christian College, MG University</p>
+      <p>Major in Computer Applications. First class with electives on Big Data Analytics and Distributed Computing.</p>
+    </div>
+    <div class="edu-block" aria-label="BCA Education">
+      <h3>BCA</h3>
+      <time datetime="2018-01">Jan 2018 - Jul 2021</time>
+      <p>Siena College of Professional Studies, MG University</p>
+      <p>Graduated with First Class (6.21 CCPA)</p>
+    </div>
+  </section>
+
+  <section id="projects" class="animate-on-scroll" aria-label="Projects">
+    <h1>Projects</h1>
+    <div class="project-block" aria-label="E-commerce Website Development">
+      <h3>E-commerce Website Development</h3>
+      <ul>
+        <li>Engineered a feature-rich e-commerce platform using Python backend, deployed on AWS.</li>
+        <li>Designed and implemented key features like shopping cart, wishlist, wallet, and secure user authentication.</li>
+        <li>Integrated PostgreSQL database to efficiently manage product listings, user profiles, and transactions.</li>
+        <li>Enabled secure online payments, ensuring seamless and user-friendly transaction experiences.</li>
+      </ul>
+    </div>
+    <div class="project-block" aria-label="AI-Powered Job Matching System">
+      <h3>AI-Powered Job Matching System (Django + DevOps + AWS) (Ongoing)</h3>
+      <ul>
+        <li>Developing an intelligent job matching platform using Python and Django with AI-driven personalized job recommendations.</li>
+        <li>Implementing RESTful APIs with Django REST Framework for user profiles, job postings, and recommendation data.</li>
+        <li>Managing data with PostgreSQL for efficient handling of job listings, user preferences, and application tracking.</li>
+        <li>Containerizing the application with Docker and orchestrating microservices using Kubernetes for scalability.</li>
+        <li>Setting up CI/CD pipelines with Jenkins, Terraform, and Ansible to automate deployment and infrastructure provisioning.</li>
+        <li>Deploying on AWS using EC2 for hosting, RDS for database management, and S3 for static file storage.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer role="contentinfo">
+  &copy; 2025 Rispa Joseph VJ. All rights reserved.
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+});
+</script>
+</body>
+</html>
