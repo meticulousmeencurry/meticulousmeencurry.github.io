@@ -13,28 +13,25 @@
         }
 
         :root {
-            --primary: #6C5CE7;
-            --secondary: #A29BFE;
-            --accent: #FD79A8;
-            --background: #F8F9FA;
+            --primary: #00B894;
+            --secondary: #00CEC9;
+            --accent: #FDCB6E;
+            --background: #DFE6E9;
             --text: #2D3436;
-            --light-text: #2c2c2c;
-            --dark-heading: #1a1a1a;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
-            margin: 0;
-            overflow-x: hidden;
             font-family: 'Source Sans Pro', sans-serif;
-            background-color: #ffffff;
-            color: var(--light-text);
             font-size: clamp(16px, 2.5vw, 18px);
             font-weight: 400;
             line-height: 1.7;
+            color: #2c2c2c;
+            background: #ffffff;
         }
 
         /* Navigation Bar */
@@ -81,6 +78,7 @@
             text-decoration: underline;
         }
 
+        /* Main Content */
         main {
             margin-top: clamp(60px, 8vh, 70px);
             padding-top: 0;
@@ -99,14 +97,14 @@
             opacity: 1 !important;
         }
 
-        .hero-content {
+        #intro .hero-content {
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
             width: 100%;
         }
 
-        .hero-greeting {
+        #intro .greeting {
             font-size: clamp(16px, 2.5vw, 20px);
             font-weight: 400;
             text-transform: uppercase;
@@ -116,7 +114,7 @@
             opacity: 0.95;
         }
 
-        .hero-name {
+        #intro h1 {
             font-size: clamp(32px, 6vw, 56px);
             font-weight: 900;
             text-transform: uppercase;
@@ -127,7 +125,7 @@
             color: #ffffff !important;
         }
 
-        .hero-title {
+        #intro .title {
             font-size: clamp(18px, 3vw, 24px);
             font-weight: 400;
             text-transform: uppercase;
@@ -137,17 +135,28 @@
             text-align: center;
         }
 
-        .hero-email {
-            font-size: clamp(14px, 2vw, 16px);
-            color: #ffffff !important;
-            opacity: 0.85;
-            margin-top: 20px;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
+        #intro .contact-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .hero-email:hover {
-            opacity: 1;
+        #intro .contact-links a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: clamp(12px, 1.8vw, 14px);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid #ffffff;
+            padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 25px);
+            transition: all 0.3s ease;
+        }
+
+        #intro .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Sections */
@@ -157,12 +166,19 @@
             max-width: 100%;
             box-sizing: border-box;
             opacity: 1 !important;
-            background: #ffffff;
-            color: var(--light-text);
         }
 
         section:nth-child(even) {
             background: #f5f5f5;
+        }
+
+        section:nth-child(odd) {
+            background: #ffffff;
+        }
+
+        section .container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         section h2 {
@@ -171,7 +187,7 @@
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-bottom: clamp(30px, 5vw, 50px);
-            color: var(--dark-heading) !important;
+            color: #1a1a1a !important;
             text-align: center;
         }
 
@@ -179,94 +195,126 @@
             font-size: clamp(18px, 3vw, 22px);
             font-weight: 600;
             margin-bottom: 15px;
-            color: var(--dark-heading) !important;
+            color: #2c2c2c !important;
         }
 
         section p, section li, section span {
-            color: var(--light-text) !important;
+            color: #2c2c2c !important;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        /* Animate on Scroll */
+        .animate-on-scroll.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
         section.animate-on-scroll:not(.visible) {
             opacity: 0;
             transform: translateY(30px);
         }
 
-        section.animate-on-scroll {
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        section.animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Summary Section */
-        .summary-text {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: clamp(15px, 2vw, 17px);
-            line-height: 1.8;
-            color: var(--light-text) !important;
-        }
-
-        /* Experience & Education Grid */
-        .grid-layout {
+        #summary .content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: clamp(30px, 5vw, 50px);
             width: 100%;
         }
 
-        .content-block {
+        .summary-block {
             padding: clamp(20px, 4vw, 30px);
             border-left: 4px solid var(--accent);
             background: transparent;
         }
 
-        .content-block h3 {
-            color: var(--dark-heading) !important;
+        .summary-block h3 {
+            color: #1a1a1a !important;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .content-block .company-role {
-            color: var(--dark-heading) !important;
-            font-weight: 600;
-            font-size: clamp(14px, 2vw, 16px);
-            margin-bottom: 5px;
+        .summary-block p {
+            font-size: clamp(15px, 2vw, 17px);
+            line-height: 1.7;
+            color: #2c2c2c !important;
         }
 
-        .content-block .date {
+        .summary-block .date {
             color: #5a5a5a !important;
             font-style: italic;
             font-size: clamp(13px, 1.8vw, 15px);
-            margin-bottom: 12px;
-        }
-
-        .content-block p, .content-block li {
-            font-size: clamp(14px, 1.9vw, 16px);
-            line-height: 1.7;
-            color: var(--light-text) !important;
             margin-bottom: 8px;
         }
 
-        .content-block ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        /* Experience Section */
+        #experience .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: clamp(30px, 5vw, 50px);
+            width: 100%;
         }
 
-        .content-block li {
-            margin-bottom: 6px;
+        .experience-card {
+            padding: clamp(25px, 4vw, 35px);
+            border-left: 4px solid var(--primary);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-card h3 {
+            color: #1a1a1a !important;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-card .company {
+            color: #5a5a5a !important;
+            font-style: italic;
+            font-size: clamp(13px, 1.8vw, 15px);
+            margin-bottom: 10px;
+        }
+
+        .experience-card .date {
+            color: #5a5a5a !important;
+            font-style: italic;
+            font-size: clamp(13px, 1.8vw, 15px);
+            margin-bottom: 15px;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            font-size: clamp(14px, 2vw, 16px);
+            line-height: 1.7;
+            color: #2c2c2c !important;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .experience-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
         }
 
         /* Skills Section */
-        .skills-grid {
+        #skills .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 20px;
@@ -288,15 +336,15 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .skill-name {
+        .skill-card .skill-name {
             font-size: clamp(14px, 2vw, 16px);
             font-weight: 600;
-            color: var(--dark-heading) !important;
+            color: #1a1a1a !important;
             text-transform: uppercase;
             letter-spacing: 0.03em;
         }
 
-        .progress-container {
+        .skill-card .progress-container {
             width: 100%;
             height: 6px;
             background: #e8e8e8;
@@ -305,7 +353,7 @@
             overflow: hidden;
         }
 
-        .progress-fill {
+        .skill-card .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--accent), var(--primary));
             animation: fillBar 1.5s ease-out forwards;
@@ -320,39 +368,133 @@
             }
         }
 
-        /* Projects Section */
-        .project-item {
-            margin-bottom: clamp(30px, 5vw, 50px);
-            padding-bottom: clamp(30px, 5vw, 50px);
-            border-bottom: 2px solid #e0e0e0;
+        /* Education Section */
+        #education .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: clamp(30px, 5vw, 50px);
+            width: 100%;
         }
 
-        .project-item:last-child {
-            border-bottom: none;
+        .education-card {
+            padding: clamp(25px, 4vw, 35px);
+            border-left: 4px solid var(--secondary);
+            background: transparent;
         }
 
-        .project-title {
-            font-size: clamp(18px, 3vw, 22px);
+        .education-card h3 {
+            color: #1a1a1a !important;
             font-weight: 600;
-            color: var(--dark-heading) !important;
-            margin-bottom: 12px;
+            margin-bottom: 5px;
         }
 
-        .project-description {
-            font-size: clamp(14px, 1.9vw, 16px);
+        .education-card .institution {
+            color: #5a5a5a !important;
+            font-style: italic;
+            font-size: clamp(13px, 1.8vw, 15px);
+            margin-bottom: 10px;
+        }
+
+        .education-card .date {
+            color: #5a5a5a !important;
+            font-style: italic;
+            font-size: clamp(13px, 1.8vw, 15px);
+            margin-bottom: 15px;
+        }
+
+        .education-card p {
+            font-size: clamp(14px, 2vw, 16px);
             line-height: 1.7;
-            color: var(--light-text) !important;
-            margin-bottom: 12px;
+            color: #2c2c2c !important;
         }
 
-        .project-description ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        /* Projects Section */
+        #projects .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: clamp(30px, 5vw, 50px);
+            width: 100%;
         }
 
-        .project-description li {
-            margin-bottom: 8px;
-            color: var(--light-text) !important;
+        .project-card {
+            padding: clamp(25px, 4vw, 35px);
+            border-left: 4px solid var(--primary);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #1a1a1a !important;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-card li {
+            font-size: clamp(14px, 2vw, 16px);
+            line-height: 1.7;
+            color: #2c2c2c !important;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .project-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Additional Info Section */
+        #additional .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: clamp(30px, 5vw, 50px);
+            width: 100%;
+        }
+
+        .info-block {
+            padding: clamp(20px, 4vw, 30px);
+            border-left: 4px solid var(--secondary);
+            background: transparent;
+        }
+
+        .info-block h3 {
+            color: #1a1a1a !important;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .info-block ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-block li {
+            font-size: clamp(14px, 2vw, 16px);
+            line-height: 1.7;
+            color: #2c2c2c !important;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-block li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
         }
 
         /* Footer */
@@ -361,31 +503,13 @@
             background: #2e3141;
             color: rgba(255, 255, 255, 0.6);
             text-align: center;
+        }
+
+        footer p {
             font-size: clamp(11px, 1.5vw, 13px);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-        }
-
-        /* Buttons */
-        .btn {
-            border: 2px solid var(--primary);
-            background: transparent;
-            padding: clamp(12px, 2vw, 15px) clamp(25px, 4vw, 35px);
-            font-size: clamp(12px, 1.8vw, 14px);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--primary);
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-        }
-
-        .btn:hover {
-            background: var(--primary);
-            color: white;
+            color: rgba(255, 255, 255, 0.6) !important;
         }
 
         /* Responsive */
@@ -395,34 +519,38 @@
                 letter-spacing: 0.03em;
             }
 
-            .skills-grid {
+            #skills .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .grid-layout {
-                grid-template-columns: 1fr;
+            section h2 {
+                font-size: clamp(24px, 4vw, 32px);
             }
         }
 
         @media (max-width: 480px) {
-            nav ul {
-                gap: 10px;
+            #summary .content,
+            #experience .content,
+            #education .content,
+            #projects .content,
+            #additional .content {
+                grid-template-columns: 1fr;
+            }
+
+            #skills .skills-grid {
+                grid-template-columns: 1fr;
             }
 
             section {
                 padding: 40px 20px;
             }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
+            nav ul {
+                gap: 10px;
             }
 
-            .grid-layout {
-                grid-template-columns: 1fr;
-            }
-
-            section h2 {
-                font-size: 24px;
+            nav a {
+                font-size: 10px;
             }
         }
     </style>
@@ -431,88 +559,78 @@
     <nav>
         <div class="logo">Rispa Joseph VJ</div>
         <ul>
-            <li><a href="#intro">Home</a></li>
-            <li><a href="#summary">About</a></li>
+            <li><a href="#summary">Summary</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#projects">Projects</a></li>
         </ul>
     </nav>
 
     <main>
-        <!-- Hero Section -->
         <section id="intro">
             <div class="hero-content">
-                <div class="hero-greeting">Welcome to my portfolio</div>
-                <h1 class="hero-name">Rispa Joseph VJ</h1>
-                <div class="hero-title">DevOps Engineer & Full Stack Developer</div>
-                <a href="mailto:rizpahjoseph@gmail.com" class="hero-email">rizpahjoseph@gmail.com</a>
-            </div>
-        </section>
-
-        <!-- Summary Section -->
-        <section id="summary" class="animate-on-scroll">
-            <div class="container">
-                <h2>Professional Summary</h2>
-                <div class="summary-text">
-                    <p>DevOps Engineer with hands-on experience in leveraging Kubernetes, Docker, Terraform, and CI/CD pipelines to automate infrastructure management and enhance deployment efficiency. Skilled in cloud technologies and container orchestration, ensuring seamless and reliable software delivery. Full Stack Developer proficient in Python, Django, ReactJS, and modern web technologies. Continuously learning and applying best practices to improve system performance, security, and operational efficiency.</p>
+                <div class="greeting">Welcome to my portfolio</div>
+                <h1>Rispa Joseph VJ</h1>
+                <div class="title">DevOps Engineer & Full Stack Developer</div>
+                <div class="contact-links">
+                    <a href="mailto:rizpahjoseph@gmail.com">Email</a>
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                    <a href="https://github.com" target="_blank">GitHub</a>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <section id="summary" class="animate-on-scroll">
+            <div class="container">
+                <h2>Professional Summary</h2>
+                <div class="content">
+                    <div class="summary-block">
+                        <h3>DevOps & Cloud Expertise</h3>
+                        <p>DevOps Engineer with hands-on experience in leveraging Kubernetes, Docker, Terraform, and CI/CD pipelines to automate infrastructure management and enhance deployment efficiency. Skilled in cloud technologies and container orchestration, ensuring seamless and reliable software delivery.</p>
+                    </div>
+                    <div class="summary-block">
+                        <h3>Full Stack Development</h3>
+                        <p>Experienced Full Stack Developer proficient in modern web technologies including Python, Django, ReactJS, and cloud platforms. Specialized in building scalable applications, optimizing performance, and implementing best practices across the development lifecycle.</p>
+                    </div>
+                    <div class="summary-block">
+                        <h3>Continuous Learning</h3>
+                        <p>Certified Kubernetes Application Developer (CKAD) with a commitment to continuous learning and applying industry best practices. Focused on improving system performance, security, and operational efficiency through innovative solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience" class="animate-on-scroll">
             <div class="container">
                 <h2>Professional Experience</h2>
-                <div class="grid-layout">
-                    <div class="content-block">
+                <div class="content">
+                    <div class="experience-card">
                         <h3>Software Developer</h3>
-                        <div class="company-role">Ewire Softtech Private Limited</div>
+                        <div class="company">Ewire Softtech Private Limited</div>
                         <div class="date">Jul 2024 - Present</div>
                         <ul>
                             <li>Developed and deployed responsive web applications using HTML, CSS, JavaScript, ReactJS, and Django</li>
                             <li>Optimized version control workflows with Git, enhancing team collaboration</li>
                             <li>Collaborated with backend and DevOps teams to automate deployments and integrate RESTful APIs</li>
-                            <li>Reduced deployment time through robust CI/CD pipelines</li>
+                            <li>Significantly reduced deployment time through robust CI/CD pipelines</li>
                         </ul>
                     </div>
-                    <div class="content-block">
+                    <div class="experience-card">
                         <h3>FullStack Developer</h3>
-                        <div class="company-role">Brototype</div>
+                        <div class="company">Brototype</div>
                         <div class="date">Jul 2023 - Jul 2024</div>
                         <ul>
                             <li>Designed and maintained scalable backend systems using Python, Django, and PostgreSQL</li>
+                            <li>Supported high-traffic applications with reliable uptime and performance</li>
                             <li>Optimized database performance through efficient querying and indexing strategies</li>
-                            <li>Implemented modern technologies and best practices improving development workflows</li>
-                            <li>Supported high-traffic applications with reliable uptime</li>
+                            <li>Implemented modern technologies and best practices for improved development workflows</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education" class="animate-on-scroll">
-            <div class="container">
-                <h2>Education</h2>
-                <div class="grid-layout">
-                    <div class="content-block">
-                        <h3>Master of Computer Applications (MCA)</h3>
-                        <div class="company-role">Union Christian College, MG University</div>
-                        <div class="date">Jul 2021 - Jul 2023</div>
-                        <p>First class with electives on Big Data Analytics and Distributed Computing</p>
-                    </div>
-                    <div class="content-block">
-                        <h3>Bachelor of Computer Applications (BCA)</h3>
-                        <div class="company-role">Siena College of Professional Studies, MG University</div>
-                        <div class="date">Aug 2015 - Jul 2018</div>
-                        <p>Graduated with First Class (6.21 CGPA)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
         <section id="skills" class="animate-on-scroll">
             <div class="container">
                 <h2>Technical Skills</h2>
@@ -520,98 +638,28 @@
                     <div class="skill-card">
                         <div class="skill-name">Python</div>
                         <div class="progress-container">
-                            <div class="progress-fill" style="width: 90%;"></div>
+                            <div class="progress-fill"></div>
                         </div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-name">Django</div>
                         <div class="progress-container">
-                            <div class="progress-fill" style="width: 85%;"></div>
+                            <div class="progress-fill"></div>
                         </div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-name">Kubernetes</div>
                         <div class="progress-container">
-                            <div class="progress-fill" style="width: 80%;"></div>
+                            <div class="progress-fill"></div>
                         </div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-name">Docker</div>
                         <div class="progress-container">
-                            <div class="progress-fill" style="width: 85%;"></div>
+                            <div class="progress-fill"></div>
                         </div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-name">AWS</div>
                         <div class="progress-container">
-                            <div class="progress-fill" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Git</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 88%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Jenkins</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 78%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">REST API</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">ReactJS</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 82%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">PostgreSQL</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 83%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Terraform</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">HTML/CSS/JS</div>
-                        <div class="progress-container">
-                            <div class="progress-fill" style="width: 88%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="animate-on-scroll">
-            <div class="container">
-                <h2>Featured Projects</h2>
-                <div class="project-item">
-                    <h3 class="project-title">AI-Powered Job Matching System</h3>
-                    <p class="project-description"><strong>Tech Stack:</strong> Django, DevOps, AWS, Kubernetes, Docker, Jenkins, Terraform, Ansible</p>
-                    <p class="project-description"><strong>Status:</strong> Ongoing</p>
-                    <div class="project-description">
-                        <ul>
-                            <li>Developing an intelligent job matching platform using Python and Django with AI-driven recommendations</li>
-                            <li>Implementing RESTful APIs with Django REST Framework for user profiles and job postings</li>
-                            <li>Managing data with PostgreSQL for efficient handling of job listings and user preferences</li>
-                            <li>Containerizing the application with Docker and orchestrating microservices using Kubernetes</li>
-                            <li>Setting up CI/CD pipelines with Jenkins, Terraform, and Ansible for automated deployment</li>
-                            <li>Deploying on AWS utilizing EC2, RDS, and S3 for comprehensive cloud infrastructure</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <h3 class="project-title">E-commerce Website Development</h3>
-                    <p class="project-description"><strong>Tech Stack:</strong> Python, Django, PostgreSQL, AWS
+                            <div class
