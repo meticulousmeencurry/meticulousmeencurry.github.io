@@ -1,622 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jennifer J. David - Technical Writer Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --primary: #2D3436;
-  --secondary: #636E72;
-  --accent: #D63031;
-  --background: #F8F9FA;
-  --text: #2D3436;
-}
-
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: clamp(16px, 2.5vw, 18px);
-  font-weight: 400;
-  line-height: 1.7;
-  color: #2c2c2c;
-  background: #ffffff;
-  overflow-x: hidden;
-}
-
-/* Navigation Bar */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: clamp(60px, 8vh, 70px);
-  background: var(--primary);
-  padding: 0 clamp(20px, 5vw, 60px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-nav .logo {
-  font-size: clamp(16px, 2.5vw, 20px);
-  font-weight: 700;
-  uppercase;
-  letter-spacing: 0.08em;
-  color: #ffffff !important;
-}
-
-nav ul {
-  display: inline-flex;
-  gap: clamp(15px, 3vw, 30px);
-  list-style: none;
-}
-
-nav a {
-  font-size: clamp(12px, 1.8vw, 14px);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.8) !important;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #ffffff !important;
-  text-decoration: underline;
-}
-
-main {
-  margin-top: clamp(60px, 8vh, 70px);
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Hero Section */
-#intro {
-  min-height: clamp(500px, 80vh, 100vh);
-  padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-  background: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1 !important;
-}
-
-#intro .hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-}
-
-#intro .greeting {
-  font-size: clamp(16px, 2.5vw, 20px);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 15px;
-  color: #ffffff !important;
-  opacity: 0.95;
-}
-
-#intro h1 {
-  font-size: clamp(32px, 6vw, 56px);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  margin: 0 auto 20px;
-  text-align: center;
-  color: #ffffff !important;
-}
-
-#intro .title {
-  font-size: clamp(18px, 3vw, 24px);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #ffffff !important;
-  opacity: 0.9;
-  text-align: center;
-}
-
-/* Sections */
-section {
-  padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  opacity: 1 !important;
-  background: #ffffff;
-  color: #2c2c2c;
-}
-
-section:nth-child(even) {
-  background: #f5f5f5;
-}
-
-section h2 {
-  font-size: clamp(28px, 5vw, 42px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: clamp(30px, 5vw, 50px);
-  color: #1a1a1a !important;
-  text-align: center;
-}
-
-section h3 {
-  font-size: clamp(18px, 3vw, 22px);
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #1a1a1a !important;
-}
-
-section p, section li, section span {
-  color: #2c2c2c !important;
-}
-
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* Animate on Scroll */
-section.animate-on-scroll:not(.visible) {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-section.animate-on-scroll {
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-section.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Summary Section */
-#summary .content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-#summary p {
-  font-size: clamp(15px, 2vw, 17px);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-/* Experience Section */
-#experience .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-  gap: clamp(30px, 5vw, 50px);
-  width: 100%;
-}
-
-.experience-block {
-  padding: clamp(20px, 4vw, 30px);
-  border-left: 4px solid var(--accent);
-  background: transparent;
-}
-
-.experience-block h3 {
-  color: #1a1a1a !important;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.company {
-  color: #1a1a1a !important;
-  font-weight: 600;
-  font-size: clamp(14px, 2vw, 16px);
-  margin-bottom: 5px;
-}
-
-.dates {
-  color: #5a5a5a !important;
-  font-style: italic;
-  font-size: clamp(13px, 1.8vw, 15px);
-  margin-bottom: 15px;
-}
-
-.experience-block p {
-  font-size: clamp(14px, 2vw, 16px);
-  line-height: 1.7;
-  color: #2c2c2c !important;
-  margin-bottom: 12px;
-}
-
-.experience-block ul {
-  margin-left: 20px;
-  margin-bottom: 15px;
-}
-
-.experience-block li {
-  font-size: clamp(14px, 2vw, 16px);
-  line-height: 1.6;
-  color: #2c2c2c !important;
-  margin-bottom: 8px;
-}
-
-/* Skills Section */
-#skills .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-  width: 100%;
-}
-
-.skill-card {
-  padding: 20px 24px;
-  background: #ffffff;
-  border: 2px solid #e0e0e0;
-  border-left: 4px solid var(--accent);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.skill-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.skill-name {
-  font-size: clamp(14px, 2vw, 16px);
-  font-weight: 600;
-  color: #1a1a1a !important;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-bottom: 12px;
-}
-
-.progress-container {
-  width: 100%;
-  height: 6px;
-  background: #e8e8e8;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  animation: fillBar 1.5s ease-out forwards;
-}
-
-@keyframes fillBar {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-/* Education Section */
-#education .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: clamp(30px, 5vw, 50px);
-  width: 100%;
-}
-
-.education-block {
-  padding: clamp(20px, 4vw, 30px);
-  border-left: 4px solid var(--accent);
-  background: transparent;
-}
-
-.education-block h3 {
-  color: #1a1a1a !important;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.institution {
-  color: #1a1a1a !important;
-  font-weight: 600;
-  font-size: clamp(14px, 2vw, 16px);
-  margin-bottom: 5px;
-}
-
-.year {
-  color: #5a5a5a !important;
-  font-style: italic;
-  font-size: clamp(13px, 1.8vw, 15px);
-  margin-bottom: 15px;
-}
-
-.education-block p {
-  font-size: clamp(14px, 2vw, 16px);
-  line-height: 1.7;
-  color: #2c2c2c !important;
-}
-
-/* Footer */
-footer {
-  padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
-  background: #2e3141;
-  color: rgba(255,255,255,0.6);
-  text-align: center;
-}
-
-footer p {
-  font-size: clamp(11px, 1.5vw, 13px);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.6) !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  nav ul {
-    gap: clamp(10px, 2vw, 20px);
-  }
-
-  nav a {
-    font-size: 11px;
-    letter-spacing: 0.03em;
-  }
-
-  #skills .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  #experience .grid,
-  #education .grid {
-    grid-template-columns: 1fr;
-  }
-
-  #skills .grid {
-    grid-template-columns: 1fr;
-  }
-
-  section {
-    padding: 40px 20px;
-  }
-
-  nav {
-    padding: 0 15px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashwin Kalaichandran | DevOps Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --primary: #2D3436;
+      --secondary: #636E72;
+      --accent: #D63031;
+      --background: #F8F9FA;
+      --text: #2D3436;
+    }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: #2c2c2c;
+      background: #ffffff;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: clamp(16px, 2.5vw, 18px);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: clamp(60px, 8vh, 70px);
+      background: var(--primary);
+      padding: 0 clamp(20px, 5vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+    nav .logo {
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: white;
+    }
+    nav .nav-links {
+      display: inline-flex;
+      gap: clamp(15px, 3vw, 30px);
+    }
+    nav .nav-links a {
+      font-size: clamp(12px, 1.8vw, 14px);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    nav .nav-links a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    main {
+      margin-top: clamp(60px, 8vh, 70px);
+      padding-top: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    #intro {
+      min-height: clamp(500px, 80vh, 100vh);
+      padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #intro .content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+    }
+    #intro .greeting {
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      color: #ffffff;
+      opacity: 0.95;
+    }
+    #intro .name {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin: 0 auto 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+    #intro .title {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      opacity: 0.9;
+      text-align: center;
+    }
+    section {
+      padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      background: #ffffff;
+      color: #2c2c2c;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    section:nth-child(even) {
+      background: #f5f5f5;
+    }
+    section h1, section h2, section h3 {
+      color: #1a1a1a !important;
+    }
+    section p, section li, section span {
+      color: #2c2c2c !important;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: clamp(30px, 5vw, 50px);
+      text-align: center;
+    }
+    section h3 {
+      font-size: clamp(18px, 3vw, 22px);
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #2c2c2c !important;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(30px, 5vw, 50px);
+      width: 100%;
+    }
+    .block {
+      padding: clamp(20px, 4vw, 30px);
+      border-left: 4px solid var(--accent);
+      background: transparent;
+    }
+    .block p, .block li {
+      font-size: clamp(15px, 2vw, 17px);
+      line-height: 1.7;
+      color: #2c2c2c !important;
+    }
+    .block .job-title, .block .company {
+      color: #1a1a1a !important;
+      font-weight: 600;
+    }
+    .block .date {
+      color: #5a5a5a !important;
+      font-style: italic;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      padding: 20px 24px;
+      background: #ffffff;
+      border: 2px solid #e0e0e0;
+      border-left: 4px solid var(--accent);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .skill-name {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 600;
+      color: #1a1a1a !important;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #e8e8e8;
+      margin-top: 12px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      animation: fillBar 1.5s ease-out forwards;
+    }
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .button {
+      border: 2px solid var(--primary);
+      background: transparent;
+      padding: clamp(12px, 2vw, 15px) clamp(25px, 4vw, 35px);
+      font-size: clamp(12px, 1.8vw, 14px);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: var(--primary);
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .button:hover {
+      background: var(--primary);
+      color: white;
+    }
+    footer {
+      padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
+      background: #2e3141;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+    }
+    footer p {
+      font-size: clamp(11px, 1.5vw, 13px);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .animate-on-scroll:not(.visible) {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .animate-on-scroll {
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      nav .nav-links a {
+        font-size: 11px;
+        letter-spacing: 0.03em;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .layout, .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-  <div class="logo">Jennifer David</div>
-  <ul>
-    <li><a href="#intro">Home</a></li>
-    <li><a href="#summary">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section id="intro">
-    <div class="hero-content">
-      <div class="greeting">Technical Writer & Information Developer</div>
-      <h1>Jennifer J. David</h1>
-      <div class="title">Senior Technical Writer | Cloud Platforms | Documentation Specialist</div>
+  <nav id="navbar">
+    <div class="logo">Ashwin Kalaichandran</div>
+    <div class="nav-links">
+      <a href="#summary">Summary</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
     </div>
-  </section>
-
-  <section id="summary" class="animate-on-scroll">
-    <div class="container">
-      <h2>Professional Summary</h2>
+  </nav>
+  <main>
+    <section id="intro">
       <div class="content">
-        <p>Experienced Technical Writer and Senior Information Developer with 11+ years of expertise in creating comprehensive technical documentation for enterprise software, cloud platforms, and healthcare solutions. Proficient in SaaS, BaaS, and DevOps environments with strong knowledge of Agile methodologies. Skilled in content management tools, API documentation, and user-centric documentation design.</p>
-        <p>Multilingual professional fluent in English, Hindi, Marathi, and Tamil. Proven track record of delivering high-quality documentation on schedule while collaborating effectively with cross-functional teams including developers, product managers, and QA engineers.</p>
+        <p class="greeting">Hello, I'm</p>
+        <h1 class="name">Ashwin Kalaichandran</h1>
+        <p class="title">DevOps Engineer | Bengaluru</p>
       </div>
-    </div>
-  </section>
-
-  <section id="experience" class="animate-on-scroll">
-    <div class="container">
-      <h2>Professional Experience</h2>
-      <div class="grid">
-        <div class="experience-block">
-          <div class="company">HCL Technologies Ltd</div>
-          <div class="dates">Nov 2019 – Dec 2024</div>
-          <h3>Technical Lead / Sr Information Developer</h3>
-          <p>Led technical documentation initiatives for cloud platforms including SaaS and BaaS solutions. Specialized in Actian-BaaS project, developing comprehensive technical content for Java-based applications deployed on AWS Cloud.</p>
-          <ul>
-            <li>Managed content across multiple platforms: Markdown, HTML, Docker, FrameMaker, Adobe Acrobat, RoboHelp</li>
-            <li>Conducted requirement analysis and information gathering from stakeholders</li>
-            <li>Created user stories and managed documentation on Jira Dashboard</li>
-            <li>Developed FRS and user documentation for enterprise applications</li>
-            <li>Upgraded skills as Technical Information Security Officer (TISO)</li>
-          </ul>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">ITC Infotech India Ltd / Lowes India</div>
-          <div class="dates">Apr 2018 – Nov 2019</div>
-          <h3>Technical Writer</h3>
-          <p>Developed documentation for digital platform enabling microservice application onboarding. Worked in DevOps-driven environment with emphasis on automation and continuous integration/deployment.</p>
-          <ul>
-            <li>Published content using Hugo and Markdown</li>
-            <li>Integrated documentation into CI/CD pipeline</li>
-            <li>Utilized Drone, Spinnaker, Kubernetes, and Docker</li>
-            <li>Managed version control with Git/Bitbucket</li>
-          </ul>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">Indegene Lifesystems Pvt Ltd</div>
-          <div class="dates">Jun 2015 – May 2017</div>
-          <h3>Technical Writer</h3>
-          <p>Created comprehensive documentation for healthcare and life sciences solutions. Developed user and admin manuals for Indegene-ipace platform combining confidence-based assessment with gamification.</p>
-          <ul>
-            <li>Created user and admin manuals for ipace versions 1.0 and 2.0</li>
-            <li>Developed technical and product feature documents</li>
-            <li>Managed API documentation using Contentful CMS</li>
-            <li>Proficient in Adobe Captivate, FrameMaker, and RoboHelp</li>
-          </ul>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">Honeywell Technology Solutions</div>
-          <div class="dates">Jun 2014</div>
-          <h3>Technical Writer</h3>
-          <p>Developed content for Honeywell Digital Suite (HDS) infrastructure documentation, including Quick Installation Guides for enterprise aerospace and commercial products.</p>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">IBM India Software Labs</div>
-          <div class="dates">Sep 2013</div>
-          <h3>Technical Writer</h3>
-          <p>Created documentation for IBM Tealeaf and Order Management Systems (OMS). Captured simulations and demos using Adobe Captivate for worldwide audiences.</p>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">ILANTUS Technologies</div>
-          <div class="dates">Jan 2013 – Mar 2013</div>
-          <h3>Technical Writer</h3>
-          <p>Documented comprehensive guides for Federation Express and Password Express products, including user guides, administrator guides, installation guides, and developer documentation.</p>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">ZeOmega Integrated Healthcare Management</div>
-          <div class="dates">Apr 2011 – Jan 2012</div>
-          <h3>Technical Writer</h3>
-          <p>Developed extensive documentation suite for Jiva Integrated Healthcare Management Software including user manuals, training materials, and technical notes.</p>
-          <ul>
-            <li>Created training manuals for Intake, Nurse, Supervisor, and Disease Management modules</li>
-            <li>Developed report manuals and online help files</li>
-            <li>Prepared release notes and glossaries</li>
-          </ul>
-        </div>
-
-        <div class="experience-block">
-          <div class="company">Lionbridge Technologies / HP</div>
-          <div class="dates">Dec 2009 – Nov 2010</div>
-          <h3>Technical Writer</h3>
-          <p>Documented HP Client Automation (HPCA) application software including user guides, installation guides, and technical notes. Worked in Agile methodology with international teams.</p>
-          <ul>
-            <li>Documented HPCA components and system administration guides</li>
-            <li>Collaborated with Fort Collins-based product teams</li>
-            <li>Proficient in FrameMaker, WebWorks Publisher, and Visio</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="animate-on-scroll">
-    <div class="container">
-      <h2>Technical Skills</h2>
-      <div class="grid">
-        <div class="skill-card">
-          <div class="skill-name">Adobe FrameMaker</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 95%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">RoboHelp</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 90%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Adobe Captivate</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 88%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Markdown</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 92%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Hugo</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 85%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">HTML/XML</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 88%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Git/Bitbucket</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 82%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Contentful CMS</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 80%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Docker</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 78%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Agile/Scrum</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 90%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">API Documentation</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 87%;"></div>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-name">Microsoft Office</div>
-          <div class="progress-container">
-            <div class="progress-fill" style="width: 93%;"></div>
+    </section>
+    <section id="summary" class="animate-on-scroll">
+      <div class="container">
+        <h2>Summary</h2>
+        <div class="layout">
+          <div class="block">
+            <p>DevOps Engineer with 7 years of experience in deploying and maintaining scalable DevOps ecosystem with end-to-end delivery pipelines across cloud and on-prem platforms. I adhere to the first principles of DevSecOps with a Shift Left mindset. Proven track record of delivery optimization by striking the right balance between velocity, quality and cost. Integrated various security tools in CICD pipelines. Agile way of working as a Product Owner. Avid learner who adapts to the everchanging technology landscape.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="documentation" class="animate-on-scroll">
-    <div class="container">
-      <h2>Documentation Expertise</h2>
-      <div class="grid">
-        <div class="experience-block">
-          <h3>Document Types</h3>
-          <ul>
-            <li>User Guides & Reference Guides</li>
-            <li>Installation & Configuration Guides</li>
-            <li>Quick Start & Troubleshooting Guides</li>
-            <li>Training Manuals & Report Manuals</li>
-            <li>Technical Notes & Release Notes</li>
-            <li>API Documentation</li>
-            <li>Online Help & Glossaries
+    </section>
+    <section id="experience" class="animate-on-scroll">
+      <div class="container">
+        <h2>Experience</h2>
+        <div class="layout">
+          <div class="block">
+            <h3 class="job-title">Advanced Software Engineer</h3>
+            <p class="company">APTIV | JUL 2023 – Present</p>
+            <ul>
+              <li>Managed Kubernetes deployments and automated AWS infrastructure provisioning (EC2, EKS, S3, VPC, IAM) using Terraform and CloudFormation</li>
+              <li>Built CI/CD pipelines in Jenkins and GitHub Actions, integrating Git, Maven, JFrog, and Docker to streamline microservices deployment and Lambda automation workflows</li>
+              <li>Optimized Git repositories larger than 100GB using Git LFS to reduce repository sizes by 30%</li>
+              <li>Enforced merge gate policies through CI tools to ensure only verified code merged into release branches</li>
+              <li>Saved around $1000 by using Docker to containerize compute-heavy workloads running on nodes</li>
+              <li>Cut log analysis time by 50% by building a custom Python CLI tool to extract and highlight error messages</li>
+              <li>Monitored application performance and infrastructure with Prometheus, Grafana, Datadog, and CloudWatch, configured alerts and handled on-call production support</li>
+              <li>Reduced pod scheduling time by 50% and cloud costs by 15% by optimizing EKS resource usage by right-sizing the pods as per resource usage observed in Grafana and Datadog</li>
+              <li>Created Bash/Python scripts and Jenkins jobs for deploying Lambda functions and integrating security scans using Trivy and SonarQube</li>
+              <li>Served as Product Owner for an automotive project, collected project requirements, designed system architecture including branching strategies, allocated AWS resources, and collaborated on planning with Scrum Masters</li>
+              <li>Authored Groovy scripts in Jenkins Shared Library for reusable deployment logic to accelerate project setup</li>
+              <li>Optimized EKS resource usage and reduced costs through pod right-sizing and enhanced observability practices using Grafana and Datadog</li>
+              <li>Crafted Python CLI scripts for automating build setup and deployment actions</li>
+              <li>Monitored infrastructure and CI pipelines actively, implementing safeguards for reliability and uptime</li>
+              <li>Resolved incidents and performed problem management, ensuring swift issue resolution and root cause detection</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3 class="job-title">Senior Software Engineer</h3>
+            <p class="company">HCLTech | SEP 2021– JUL 2023</p>
+            <ul>
+              <li>Implemented end-to-end automation for all builds and deployments in Continuous Integration setups</li>
+              <li>Utilized Apache Ant and other build tools to streamline compilation and packaging processes</li>
+              <li>Built deployment and automation scripts using Groovy, Perl, Shell, and Python to reduce manual efforts</li>
+              <li>Managed version control using SVN and GitLab, ensuring seamless source code tracking and integration</li>
+              <li>Configured monitoring tools like Kapacitor and Grafana to track performance metrics and system health</li>
+              <li>Established GitLab CI/CD pipelines to standardize software lifecycle processes</li>
+              <li>Created monitoring scripts for applications, systems, and databases, ensuring consistent visibility</li>
+              <li>Delivered TCL scripts to perform bulk database modifications with precision</li>
+              <li>Migrated source code repositories from SVN to GitLab to improve version control and collaboration</li>
+              <li>Automated ITIL reports with Python scripts to improve incident tracking and reporting accuracy</li>
+              <li>Extracted bulk data from databases using TCL scripting for downstream processes</li>
+              <li>Oversaw deployments across Production and Non-Production platforms, maintaining version integrity</li>
+              <li>Participated in on-call support rotations, addressing application issues and ensuring SLAs were met</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3 class="job-title">Programmer Analyst</h3>
+            <p class="company">Cognizant | AUG 2020 – SEP 2021</p>
+            <ul>
+              <li>Automated multiple manual processes related to PLM application deployment, installation, and monitoring to improve operational efficiency</li>
+              <li>Developed Python scripts to streamline IT operations like processing user requests and provisioning tasks</li>
+              <li>Built Grafana dashboards to visualize application performance metrics and system health</li>
+              <li>Migrated engineering data—including CAD and CAE documents—from ENOVIA V5 to 3DExperience 2019x, ensuring data integrity and failure recovery</li>
+              <li>Deployed, tested, and validated the PLM Tool in both Quality and Production environments to ensure readiness and reliability</li>
+              <li>Provided 24/7 support for the Production Environment, maintaining system uptime and quick issue turnaround</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3 class="job-title">Associate IT Developer</h3>
+            <p class="company">Medtronic | JUL 2019 – AUG 2020</p>
+            <ul>
+              <li>Deployed full-stack PLM Applications like 3DExperience in Production environments to meet business delivery timelines</li>
+              <li>Administered, licensed, installed, configured, and resolved issues for on-premise and cloud-based 3DExperience systems</li>
+              <li>Designed Proof of Concepts (PoC) for customer-specific requirements and performed benchmark evaluations</li>
+              <li>Configured and managed both Windows and Linux OS for PLM workloads and automation tasks</li>
+              <li>Managed incidents and ticket flows using ServiceNow for rapid resolution and team visibility</li>
+              <li>Developed macros and configurations for automotive design tools to enhance engineer productivity</li>
+              <li>Automated design workflows—both parametric and non-parametric—using CATIA for automotive product lines</li>
+              <li>Collaborated with engineering teams to streamline deployment pipelines and cut down provisioning time using scripts</li>
+              <li>Conducted root cause analysis and implemented long-term fixes to boost stability and reduce recurring issues</li>
+              <li>Supported environment cloning, platform migration, and version upgrades to meet system evolution needs</li>
+              <li>Integrated automated monitoring and log analysis solutions to elevate observability and accelerate incident response</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3 class="job-title">Programmer Analyst</h3>
+            <p class="company">Cognizant | DEC 2017 – JUL 2019</p>
+            <ul>
+              <li>Managed full-cycle support and maintenance for Enovia 2009x across QA and Production stages</li>
+              <li>Deployed, tested, and validated PLM tools in QA and Production environments to ensure solution consistency</li>
+              <li>Provided 24/7 Production Environment support to maintain business continuity and address critical issues</li>
+              <li>Delivered TCL and MQL scripts for performing bulk updates on production databases</li>
+              <li>Migrated codebase from SVN to GitLab, improving version control systems and collaboration efficiency</li>
+              <li>Participated in Hackathons, delivering innovative technical solutions aligned with customer requirements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="animate-on-scroll">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-name">Python</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Shell</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Git</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Gerrit</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">GitHub</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Plastic SCM</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Docker</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Kubernetes</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">SonarQube</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Coverity</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Trivy</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">BlackDuck</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Terraform</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">AWS EC2</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">EKS</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Lambda</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">RDS</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Datadog</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Grafana</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name">Jira</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="education" class="animate-on-scroll">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="layout">
+          <div class="block">
+            <h3 class="job-title">Bachelor of Engineering – Mechanical</h3>
+            <p class="company">St. Joseph’s Institute of Technology (Anna University) | 2013 – 2017</p>
+            <p class="date">CGPA: 8.14 /10</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2025 Ashwin Kalaichandran. All rights reserved.</p>
+    </footer>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.animate-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
