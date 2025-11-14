@@ -1,503 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashwin Kalaichandran | DevOps Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    :root {
-      --primary: #00B894;
-      --secondary: #00CEC9;
-      --accent: #FDCB6E;
-      --background: #DFE6E9;
-      --text: #2D3436;
-    }
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      color: #2c2c2c;
-      background: #ffffff;
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: clamp(16px, 2.5vw, 18px);
-      font-weight: 400;
-      line-height: 1.7;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      height: clamp(60px, 8vh, 70px);
-      background: var(--primary);
-      padding: 0 clamp(20px, 5vw, 60px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1000;
-    }
-    nav .logo {
-      font-size: clamp(16px, 2.5vw, 20px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: white;
-    }
-    nav .nav-links {
-      display: inline-flex;
-      gap: clamp(15px, 3vw, 30px);
-    }
-    nav .nav-links a {
-      font-size: clamp(12px, 1.8vw, 14px);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-    }
-    nav .nav-links a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-    main {
-      margin-top: clamp(60px, 8vh, 70px);
-      padding-top: 0;
-      width: 100%;
-      max-width: 100%;
-    }
-    #intro {
-      min-height: clamp(500px, 80vh, 100vh);
-      padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-      background: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #intro .content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      width: 100%;
-    }
-    #intro .greeting {
-      font-size: clamp(16px, 2.5vw, 20px);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 15px;
-      color: #ffffff;
-      opacity: 0.95;
-    }
-    #intro .name {
-      font-size: clamp(32px, 6vw, 56px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.2;
-      margin: 0 auto 20px;
-      text-align: center;
-      color: #ffffff;
-    }
-    #intro .title {
-      font-size: clamp(18px, 3vw, 24px);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      opacity: 0.9;
-      text-align: center;
-    }
-    section {
-      padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      background: #ffffff;
-      color: #2c2c2c;
-      opacity: 1 !important;
-    }
-    section:nth-child(even) {
-      background: #f5f5f5;
-    }
-    section h1, section h2, section h3 {
-      color: #1a1a1a !important;
-    }
-    section p, section li, section span {
-      color: #2c2c2c !important;
-    }
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    section h2 {
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: clamp(30px, 5vw, 50px);
-      text-align: center;
-    }
-    section h3 {
-      font-size: clamp(18px, 3vw, 22px);
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #2c2c2c !important;
-    }
-    .layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      gap: clamp(30px, 5vw, 50px);
-      width: 100%;
-    }
-    .block {
-      padding: clamp(20px, 4vw, 30px);
-      border-left: 4px solid var(--accent);
-      background: transparent;
-    }
-    .block p, .block li {
-      font-size: clamp(15px, 2vw, 17px);
-      line-height: 1.7;
-      color: #2c2c2c !important;
-    }
-    .block .job-title, .block .company {
-      color: #1a1a1a !important;
-      font-weight: 600;
-    }
-    .block .date {
-      color: #5a5a5a !important;
-      font-style: italic;
-    }
-    #skills .layout {
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-    }
-    .skill-card {
-      padding: 20px 24px;
-      background: #ffffff;
-      border: 2px solid #e0e0e0;
-      border-left: 4px solid var(--accent);
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .skill-card .skill-name {
-      font-size: clamp(14px, 2vw, 16px);
-      font-weight: 600;
-      color: #1a1a1a !important;
-      text-transform: uppercase;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapatla Rakesh Reddy - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #6C5CE7;
+    --secondary: #A29BFE;
+    --accent: #FD79A8;
+    --background: #F8F9FA;
+    --text: #2D3436;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--background);
+    overflow-x: hidden;
+  }
+  nav#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: clamp(60px, 8vh, 70px);
+    background: var(--primary);
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  nav#navbar .logo {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff !important;
+  }
+  nav#navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    gap: clamp(15px, 3vw, 30px);
+  }
+  nav#navbar ul li {
+    font-size: clamp(12px, 1.8vw, 14px);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+  }
+  nav#navbar ul li:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  main {
+    margin-top: clamp(60px, 8vh, 70px);
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+  #intro {
+    min-height: clamp(500px, 80vh, 100vh);
+    padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff !important;
+  }
+  #intro .greeting {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 15px;
+    opacity: 0.95;
+  }
+  #intro .name {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0 auto 20px;
+    color: #ffffff;
+  }
+  #intro .title {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    color: #ffffff;
+  }
+  section {
+    opacity: 1 !important;
+    background: #ffffff;
+    color: #2c2c2c !important;
+    padding: clamp(60px, 10vw, 100px) clamp(30px, 8vw, 80px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  section.animate-on-scroll:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  section.animate-on-scroll {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    color: #1a1a1a !important;
+    text-align: center;
+  }
+  section h2 {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c2c2c !important;
+  }
+  section p, section li, section span {
+    color: #2c2c2c !important;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(30px, 5vw, 50px);
+    width: 100%;
+  }
+  .content-block {
+    padding: clamp(20px, 4vw, 30px);
+    border-left: 4px solid var(--accent);
+    background: transparent;
+    color: #2c2c2c !important;
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.7;
+  }
+  .content-block h3 {
+    color: #1a1a1a !important;
+    font-weight: 600;
+    margin-top: 0;
+  }
+  .dates {
+    color: #5a5a5a !important;
+    font-style: italic;
+    margin-bottom: 10px;
+    display: block;
+  }
+  /* Skills Section */
+  #skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  .skill-card {
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-left: 4px solid var(--accent);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .skill-name {
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    color: #1a1a1a !important;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e8e8;
+    margin-top: 12px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    width: 0;
+    animation: fillBar 1.5s ease-out forwards;
+  }
+  @keyframes fillBar {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  /* Buttons */
+  button {
+    border: 2px solid var(--primary);
+    background: transparent;
+    padding: clamp(12px, 2vw, 15px) clamp(25px, 4vw, 35px);
+    font-size: clamp(12px, 1.8vw, 14px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--primary);
+  }
+  button:hover {
+    background: var(--primary);
+    color: white;
+  }
+  /* Footer */
+  footer {
+    padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
+    background: #2e3141;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: clamp(11px, 1.5vw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav#navbar ul li {
+      font-size: 11px;
       letter-spacing: 0.03em;
     }
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      background: #e8e8e8;
-      margin-top: 12px;
-      border-radius: 3px;
-      overflow: hidden;
+    #skills .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      animation: fillBar 1.5s ease-out forwards;
+  }
+  @media (max-width: 480px) {
+    #skills .skills-grid {
+      grid-template-columns: 1fr;
     }
-    @keyframes fillBar {
-      from { width: 0; }
-      to { width: 100%; }
+    section {
+      padding: 40px 20px;
     }
-    .btn {
-      border: 2px solid var(--primary);
-      background: transparent;
-      padding: clamp(12px, 2vw, 15px) clamp(25px, 4vw, 35px);
-      font-size: clamp(12px, 1.8vw, 14px);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: all 0.3s;
-      color: var(--primary);
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background: var(--primary);
-      color: white;
-    }
-    footer {
-      padding: clamp(40px, 6vw, 60px) clamp(30px, 8vw, 80px);
-      background: #2e3141;
-      color: rgba(255,255,255,0.6);
-      text-align: center;
-    }
-    footer p {
-      font-size: clamp(11px, 1.5vw, 13px);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .animate-on-scroll:not(.visible) {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .animate-on-scroll {
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (max-width: 768px) {
-      nav .nav-links a {
-        font-size: 11px;
-        letter-spacing: 0.03em;
-      }
-      #skills .layout {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 480px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-      #skills .layout {
-        grid-template-columns: 1fr;
-      }
-      section {
-        padding: 40px 20px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <nav id="navbar">
-    <div class="logo">ASHWIN KALAICHANDRAN</div>
-    <div class="nav-links">
-      <a href="#summary">Summary</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
+<nav id="navbar">
+  <div class="logo">CHAPATLA RAKESH REDDY</div>
+  <ul>
+    <li><a href="#summary" style="color:inherit; text-decoration:none;">Summary</a></li>
+    <li><a href="#experience" style="color:inherit; text-decoration:none;">Experience</a></li>
+    <li><a href="#skills" style="color:inherit; text-decoration:none;">Skills</a></li>
+    <li><a href="#education" style="color:inherit; text-decoration:none;">Education</a></li>
+  </ul>
+</nav>
+<main>
+  <section id="intro" aria-label="Introduction">
+    <div class="content-wrapper" style="max-width:900px; margin:0 auto; width:100%;">
+      <div class="greeting">Senior Manager, Applications Engineering</div>
+      <h1 class="name">Chapatla Rakesh Reddy</h1>
+      <div class="title">Engineering Leader | DevSecOps | Application Security Automation</div>
     </div>
-  </nav>
-  <main>
-    <section id="intro">
-      <div class="content">
-        <p class="greeting">Hello, I'm</p>
-        <h1 class="name">Ashwin Kalaichandran</h1>
-        <p class="title">DevOps Engineer | Bengaluru</p>
-      </div>
-    </section>
-    <section id="summary" class="animate-on-scroll">
-      <div class="container">
-        <h2>Summary</h2>
-        <p>DevOps Engineer with 7 years of experience in deploying and maintaining scalable DevOps ecosystem with end-to-end delivery pipelines across cloud and on-prem platforms. I adhere to the first principles of DevSecOps with a Shift Left mindset. Proven track record of delivery optimization by striking the right balance between velocity, quality and cost. Integrated various security tools in CICD pipelines. Agile way of working as a Product Owner. Avid learner who adapts to the everchanging technology landscape.</p>
-      </div>
-    </section>
-    <section id="experience" class="animate-on-scroll">
-      <div class="container">
-        <h2>Experience</h2>
-        <div class="layout">
-          <div class="block">
-            <h3 class="job-title">Advanced Software Engineer</h3>
-            <p class="company">APTIV | JUL 2023 – Present</p>
-            <ul>
-              <li>Managed Kubernetes deployments and automated AWS infrastructure provisioning (EC2, EKS, S3, VPC, IAM) using Terraform and CloudFormation</li>
-              <li>Built CI/CD pipelines in Jenkins and GitHub Actions, integrating Git, Maven, JFrog, and Docker to streamline microservices deployment and Lambda automation workflows</li>
-              <li>Optimized Git repositories larger than 100GB using Git LFS to reduce repository sizes by 30%</li>
-              <li>Enforced merge gate policies through CI tools to ensure only verified code merged into release branches</li>
-              <li>Saved around $1000 by using Docker to containerize compute-heavy workloads running on nodes</li>
-              <li>Cut log analysis time by 50% by building a custom Python CLI tool to extract and highlight error messages</li>
-              <li>Monitored application performance and infrastructure with Prometheus, Grafana, Datadog, and CloudWatch, configured alerts and handled on-call production support</li>
-              <li>Reduced pod scheduling time by 50% and cloud costs by 15% by optimizing EKS resource usage by right-sizing the pods as per resource usage observed in Grafana and Datadog</li>
-              <li>Created Bash/Python scripts and Jenkins jobs for deploying Lambda functions and integrating security scans using Trivy and SonarQube</li>
-              <li>Served as Product Owner for an automotive project, collected project requirements, designed system architecture including branching strategies, allocated AWS resources, and collaborated on planning with Scrum Masters</li>
-              <li>Authored Groovy scripts in Jenkins Shared Library for reusable deployment logic to accelerate project setup</li>
-              <li>Optimized EKS resource usage and reduced costs through pod right-sizing and enhanced observability practices using Grafana and Datadog</li>
-              <li>Crafted Python CLI scripts for automating build setup and deployment actions</li>
-              <li>Monitored infrastructure and CI pipelines actively, implementing safeguards for reliability and uptime</li>
-              <li>Resolved incidents and performed problem management, ensuring swift issue resolution and root cause detection</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Senior Software Engineer</h3>
-            <p class="company">HCLTech | SEP 2021– JUL 2023</p>
-            <ul>
-              <li>Implemented end-to-end automation for all builds and deployments in Continuous Integration setups</li>
-              <li>Utilized Apache Ant and other build tools to streamline compilation and packaging processes</li>
-              <li>Built deployment and automation scripts using Groovy, Perl, Shell, and Python to reduce manual efforts</li>
-              <li>Managed version control using SVN and GitLab, ensuring seamless source code tracking and integration</li>
-              <li>Configured monitoring tools like Kapacitor and Grafana to track performance metrics and system health</li>
-              <li>Established GitLab CI/CD pipelines to standardize software lifecycle processes</li>
-              <li>Created monitoring scripts for applications, systems, and databases, ensuring consistent visibility</li>
-              <li>Delivered TCL scripts to perform bulk database modifications with precision</li>
-              <li>Migrated source code repositories from SVN to GitLab to improve version control and collaboration</li>
-              <li>Automated ITIL reports with Python scripts to improve incident tracking and reporting accuracy</li>
-              <li>Extracted bulk data from databases using TCL scripting for downstream processes</li>
-              <li>Oversaw deployments across Production and Non-Production platforms, maintaining version integrity</li>
-              <li>Participated in on-call support rotations, addressing application issues and ensuring SLAs were met</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Programmer Analyst</h3>
-            <p class="company">Cognizant | AUG 2020 – SEP 2021</p>
-            <ul>
-              <li>Automated multiple manual processes related to PLM application deployment, installation, and monitoring to improve operational efficiency</li>
-              <li>Developed Python scripts to streamline IT operations like processing user requests and provisioning tasks</li>
-              <li>Built Grafana dashboards to visualize application performance metrics and system health</li>
-              <li>Migrated engineering data—including CAD and CAE documents—from ENOVIA V5 to 3DExperience 2019x, ensuring data integrity and failure recovery</li>
-              <li>Deployed, tested, and validated the PLM Tool in both Quality and Production environments to ensure readiness and reliability</li>
-              <li>Provided 24/7 support for the Production Environment, maintaining system uptime and quick issue turnaround</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Associate IT Developer</h3>
-            <p class="company">Medtronic | JUL 2019 – AUG 2020</p>
-            <ul>
-              <li>Deployed full-stack PLM Applications like 3DExperience in Production environments to meet business delivery timelines</li>
-              <li>Administered, licensed, installed, configured, and resolved issues for on-premise and cloud-based 3DExperience systems</li>
-              <li>Designed Proof of Concepts (PoC) for customer-specific requirements and performed benchmark evaluations</li>
-              <li>Configured and managed both Windows and Linux OS for PLM workloads and automation tasks</li>
-              <li>Managed incidents and ticket flows using ServiceNow for rapid resolution and team visibility</li>
-              <li>Developed macros and configurations for automotive design tools to enhance engineer productivity</li>
-              <li>Automated design workflows—both parametric and non-parametric—using CATIA for automotive product lines</li>
-              <li>Collaborated with engineering teams to streamline deployment pipelines and cut down provisioning time using scripts</li>
-              <li>Conducted root cause analysis and implemented long-term fixes to boost stability and reduce recurring issues</li>
-              <li>Supported environment cloning, platform migration, and version upgrades to meet system evolution needs</li>
-              <li>Integrated automated monitoring and log analysis solutions to elevate observability and accelerate incident response</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3 class="job-title">Programmer Analyst</h3>
-            <p class="company">Cognizant | DEC 2017 – JUL 2019</p>
-            <ul>
-              <li>Managed full-cycle support and maintenance for Enovia 2009x across QA and Production stages</li>
-              <li>Deployed, tested, and validated PLM tools in QA and Production environments to ensure solution consistency</li>
-              <li>Provided 24/7 Production Environment support to maintain business continuity and address critical issues</li>
-              <li>Delivered TCL and MQL scripts for performing bulk updates on production databases</li>
-              <li>Migrated codebase from SVN to GitLab, improving version control systems and collaboration efficiency</li>
-              <li>Participated in Hackathons, delivering innovative technical solutions aligned with customer requirements</li>
-            </ul>
-          </div>
+  </section>
+
+  <section id="summary" class="animate-on-scroll" aria-label="Professional Summary">
+    <div class="container">
+      <h1>Summary</h1>
+      <p>Experienced in leading teams with 15 years of success managing diverse technology projects at Blackduck, Synopsys, HP Inc, and DXC. Proven expertise in DevSecOps, application security automation, and security tooling integration. Skilled at bridging development, security, and operations to deliver scalable, secure, and efficient software pipelines. Passionate about building inclusive, data-driven teams that drive innovation and measurable security improvements.</p>
+      <p>Recognized for building high-performance teams, mentoring engineering talent, and fostering a customer-obsessed culture. Adept at aligning support strategies with business goals and collaborating cross-functionally with Sales, Product, Engineering, and Operations. Known for a strong commercial mindset, high integrity, and adaptability in fast-paced, dynamic settings.</p>
+      <p>Engineering leader with over 10 years of leadership experience in building and scaling global engineering teams. Proven track record of driving support transformation and continuous improvement initiatives, with deep expertise in support platforms, monitoring, and automation tools.</p>
+      <p>Thrives in high-growth, fast-paced environments with a hands-on, action-oriented approach. Combines strategic thinking with operational execution to align support strategies with business outcomes. Excellent communicator leveraging technical acumen to communicate effectively with client executives and teams.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="animate-on-scroll" aria-label="Work Experience">
+    <div class="container">
+      <h1>Work Experience</h1>
+      <div class="grid-layout">
+        <div class="content-block">
+          <h3>Senior Manager, Applications Engineering</h3>
+          <span class="dates">Blackduck (Previously Synopsys SIG India), Koramangala, Bangalore — April 2020 to Current</span>
+          <p>Lead strategic initiatives at the intersection of Application Security, DevOps, and Software Engineering, driving secure software delivery across enterprise environments. Partner closely with Product, Security, and Engineering leaders to design, integrate, and scale security tooling into development workflows, advancing the organization’s DevSecOps maturity and automation capabilities.</p>
+          <p><strong>Key Responsibilities & Achievements:</strong></p>
+          <ul>
+            <li>Defined and executed strategy for integrating SAST, SCA, DAST, and IAST tooling within CI/CD pipelines, improving code security coverage.</li>
+            <li>Led cross-functional collaboration with Application Security, Vulnerability Management, and Infrastructure Security teams to embed security controls early in SDLC.</li>
+            <li>Architected custom integrations automating vulnerability detection and reporting using Black Duck, Coverity, Polaris, and others.</li>
+            <li>Managed a global team fostering collaboration, technical excellence, and continuous learning.</li>
+            <li>Implemented process improvements and automation to reduce manual intervention and optimize SLA performance.</li>
+            <li>Championed data-driven decision-making with KPIs measuring tool effectiveness and security posture.</li>
+            <li>Mentored engineers and team leads supporting career growth in security automation and systems reliability.</li>
+          </ul>
+          <p><strong>Key Outcomes:</strong></p>
+          <ul>
+            <li>Reduced vulnerability remediation time and improved application security coverage.</li>
+            <li>Increased automation efficiency and decreased incident recurrence.</li>
+            <li>Maintained stakeholder NPS scores of 8–10, reflecting high satisfaction.</li>
+          </ul>
+        </div>
+        <div class="content-block">
+          <h3>Associate Manager Service Delivery</h3>
+          <span class="dates">DXC Technology (Previously Hewlett Packard and Hewlett Packard Enterprise), Electronic City, Bangalore — June 2017 to April 2020</span>
+          <p>Led a global team of 40+ Site Reliability Engineers ensuring high service uptime and operational excellence. Owned end-to-end availability and performance of key services; implemented automation to eliminate recurring issues and streamline incident response.</p>
+          <p><strong>Roles & Responsibilities:</strong></p>
+          <ul>
+            <li>Managed global on-call rotations with 24/7 coverage.</li>
+            <li>Provisioned and configured AWS infrastructure (EC2, VPC, IAM, ELB, Auto Scaling, Route53, CloudWatch).</li>
+            <li>Implemented monitoring and alerting systems using Lambda, SNS, CloudWatch, Datadog, and ELK Stack.</li>
+            <li>Collaborated with SRE, Product, and Cloud Engineering teams to meet SaaS uptime and SLO commitments.</li>
+            <li>Owned incident management, runbook maintenance, and SOP development.</li>
+            <li>Drove automation to reduce toil and improve operational efficiency.</li>
+            <li>Published operational KPIs to monitor team performance and service levels.</li>
+          </ul>
+        </div>
+        <div class="content-block">
+          <h3>Representative Projects (2010 to 2017)</h3>
+          <p><strong>Systems Engineering:</strong> Integration Framework and Event Automation project reduced incident volume by integrating cross-platform workflow applications using MS BizTalk Server and HP OM servers.</p>
+          <p><strong>System Integrations/Migrations:</strong> Part of IT SMART program transitioning legacy systems to new SRA systems, achieving seamless migrations transparent to clients.</p>
+          <p><strong>Roles & Responsibilities:</strong></p>
+          <ul>
+            <li>Managed incident escalations and communication for high severity incidents.</li>
+            <li>Liaison point for Integration Tools and Event Automation Monitoring.</li>
+            <li>Managed workforce planning and productivity metrics.</li>
+          </ul>
         </div>
       </div>
-    </section>
-    <section id="skills" class="animate-on-scroll">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="layout">
-          <div class="skill-card">
-            <div class="skill-name">Python</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Shell</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Git</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Gerrit</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">GitHub</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Plastic SCM</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Docker</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Kubernetes</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">SonarQube</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Coverity</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Trivy</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">BlackDuck</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Terraform</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">AWS EC2</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">EKS</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Lambda</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">RDS</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Datadog</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Grafana</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name">Jira</div>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-          </div>
+    </div>
+  </section>
+
+  <section id="skills" class="animate-on-scroll" aria-label="Skills">
+    <div class="container">
+      <h1>Skills Summary</h1>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-name">Cloud Infrastructure (AWS)</div>
+          <div class="progress-bar-container"><div class="progress-fill" style="animation-delay: 0s;"></div></div>
+          <p>Experienced in architecting and implementing best practices on AWS. Key services: RDS, ElastiCache, S3, CloudFront, Lambda, EC2, ECS, ELB/ALB, Route53, VPC, IAM, Security Groups, NACL, CloudWatch.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Backend & Data Engineering</div>
+          <div class="progress-bar-container"><div class="progress-fill" style="animation-delay: 0.1s;"></div></div>
+          <p>Proficient in PostgreSQL, RESTful APIs, and Apache Spark for scalable data processing.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">DevSecOps & Monitoring</div>
+          <div class="progress-bar-container"><div class="progress-fill" style="animation-delay: 0.2s;"></div></div>
+          <p>Hands-on with GitHub, Jenkins, Ansible, Docker, Kubernetes, Docker Swarm, Terraform. Monitoring tools: Nagios, Logstash, ELK Stack, AWS CloudWatch, Portainer, Grafana, Datadog. Project tools: Jira.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Application Security Expertise</div>
+          <div class="progress-bar-container"><div class="progress-fill" style="animation-delay: 0.3s;"></div></div>
+          <p>Black Duck (SCA), Coverity (SAST), Seeker (IAST), Polaris.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-name">Site Reliability Engineering (SRE)</div>
+          <div class="progress-bar-container"><div class="progress-fill" style="animation-delay: 0.4s;"></div></div>
+          <p>Expertise in application security services, incident management, production support, customer account management, automation, reporting, and analytics.</p>
         </div>
       </div>
-    </section>
-    <section id="education" class="animate-on-scroll">
-      <div class="container">
-        <h2>Education</h2>
-        <div class="layout">
-          <div class="block">
-            <h3 class="job-title">Bachelor of Engineering – Mechanical</h3>
-            <p class="company">St. Joseph’s Institute of Technology (Anna University) | 2013 – 2017</p>
-            <p class="date">CGPA: 8.14 /10</p>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <section id="education" class="animate-on-scroll" aria-label="Education and Certifications">
+    <div class="container">
+      <h1>Education & Certifications</h1>
+      <div class="content-block">
+        <h3>Master’s in Computer Applications</h3>
+        <span class="dates">Sri Venkateshwara University, Tirupathi, Andhra Pradesh</span>
       </div>
-    </section>
-    <footer>
-      <p>&copy; 2025 Ashwin Kalaichandran. All rights reserved.</p>
-    </footer>
-  </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('.animate-on-scroll');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      sections.forEach(section => observer.observe(section));
+      <div class="content-block">
+        <h3>Certifications</h3>
+        <ul>
+          <li>EC Council CEH Certified</li>
+          <li>Certified Kubernetes Administrator – CKA</li>
+          <li>ITIL V3 Certified</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Chapatla Rakesh Reddy. All rights reserved.
+  </footer>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  </script>
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+});
+</script>
 </body>
 </html>
